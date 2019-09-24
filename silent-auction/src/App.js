@@ -1,14 +1,12 @@
 import React from "react";
-import Register from './components/Register.js'; 
+import RegistrationForm from './components/Forms/RegisterForm.js'; 
 import Navigation from "./components/Navigation.js";
-
 
 export default function App() {
   return (
     <main>
       <Navigation />
-      <Register />
+      <RegistrationForm />
     </main>
   );
-}
-
+};
