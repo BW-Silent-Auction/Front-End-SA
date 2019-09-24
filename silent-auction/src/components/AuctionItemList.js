@@ -3,8 +3,12 @@ import axios from "axios";
 
 import ItemCard from "./ItemCard";
 
-const AuctionItemList = () => {
+const AuctionItemList = props => {
   const [itemList, setItemList] = useState([]);
+
+  const auctionItemDetailHandler = id => {
+    props.history.push(`/products/${id}`);
+  };
 
   useEffect(() => {
     axios
@@ -17,7 +21,11 @@ const AuctionItemList = () => {
     <section>
       {itemList
         ? itemList.map(item => (
-            <ItemCard image={item.image} title={item.title} />
+            <ItemCard
+              image={item.image}
+              title={item.title}
+              onDetailClicked={() => auctionItemDetailHandler(item.id)}
+            />
           ))
         : null}
     </section>

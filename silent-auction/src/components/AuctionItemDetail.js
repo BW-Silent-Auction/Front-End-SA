@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const AuctionItemDetail = () => {
+const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
+
+  const clickedHandler = () => {
+    props.history.push(`/products/id/bid`);
+  };
 
   useEffect(() => {
     axios
@@ -37,7 +41,7 @@ const AuctionItemDetail = () => {
         <Timer bidDeadline={itemDetail.bidDeadline} />
       </div>
       <div>
-        <button>Place a bid</button>
+        <button onClick={clickedHandler}>Place a bid</button>
       </div>
     </section>
   );

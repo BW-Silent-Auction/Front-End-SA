@@ -6,9 +6,7 @@ const ItemCard = props => {
       <img className="card-image" src={props.image} alt="Card image" />
       <div>
         <h4 className="card-title">{props.title}</h4>
-        <a href="#" className="card-btn">
-          Details
-        </a>
+        <button onClick={props.onDetailClicked}>Details</button>
       </div>
     </div>
   );
