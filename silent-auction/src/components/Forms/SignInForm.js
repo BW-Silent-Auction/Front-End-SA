@@ -54,7 +54,7 @@ const SignInForm = props => {
   };
   return (
     <FormContainer>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <SignInFieldSet>
           <SignInTitle htmlFor="title">Sign In</SignInTitle>
           <div className="input-container">

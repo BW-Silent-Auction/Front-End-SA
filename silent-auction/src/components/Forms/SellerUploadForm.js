@@ -63,7 +63,7 @@ const SellerForm = props => {
 
   return (
     <SellerFormContainer>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <UploadFieldSet>
             <UploadTitle>Add New Item</UploadTitle>
                 <div className="input-file">

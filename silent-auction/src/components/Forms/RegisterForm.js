@@ -69,7 +69,7 @@ const RegistrationForm = props => {
   return (
     <div>
       <FormContainer>
-        <form onSubmit={e => handleSubmit(e)}>
+        <form onSubmit={handleSubmit}>
           <RegisterFieldSet>
           <RegisterTitle htmlFor="title">Register for an Account</RegisterTitle>
             <RegisterInput>

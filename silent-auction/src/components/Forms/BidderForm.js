@@ -68,7 +68,7 @@ const BidderForm = props => {
 
   return (
     <BidderContainer>
-      <form onSubmit={e => handleSubmit(e)}>
+      <form onSubmit={handleSubmit}>
         <BidFieldSet>
           <NewBidTitle>Enter Your Bid Price</NewBidTitle>
           <hr />
