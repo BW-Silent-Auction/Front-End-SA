@@ -22,8 +22,14 @@ const SellerItemDetail = props => {
       </div>
       <div>
         <p>Starting Bid Price: {sellerItemDetail.startingPrice}</p>
-        <p>Current Highest Bid: {sellerItemDetail.highestPrice}</p>
-        <span>Current Highest Bidder{sellerItemDetail.hightestBidder}</span>
+        <ul>
+          {sellerItemDetail.bid.map(bid => (
+            <li>
+              <p>Bid Price: {bid.bid_amount}</p>
+              <span>Bidder: {bid.buyer}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>

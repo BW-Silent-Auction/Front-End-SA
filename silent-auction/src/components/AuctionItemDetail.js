@@ -14,7 +14,7 @@ const AuctionItemDetail = () => {
   return (
     <section>
       <div>
-        <img src={itemDetail.image} alt="Card image" />
+        <img src={itemDetail.image} alt="image" />
         <div>
           <h4>{itemDetail.title}</h4>
           <p>{itemDetail.description}</p>
@@ -22,16 +22,22 @@ const AuctionItemDetail = () => {
       </div>
       <div>
         <p>Starting Price: {itemDetail.startingPrice}</p>
-        <p>Highest Price: {itemDetail.highestPrice}</p>
-        <span>Highest Bidder: {itemDetail.hightestBidder}</span>
-      </div>
-      <div>
-        <button>Place a bid</button>
+        <ul>
+          {itemDetail.bid.map(bid => (
+            <li>
+              <p>Bid Price: {bid.bid_amount}</p>
+              <span>Bidder: {bid.buyer}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div>
         Time Remaining to Bid:
         <Timer bidDeadline={itemDetail.bidDeadline} />
+      </div>
+      <div>
+        <button>Place a bid</button>
       </div>
     </section>
   );
