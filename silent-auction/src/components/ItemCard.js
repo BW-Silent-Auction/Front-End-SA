@@ -1,12 +1,11 @@
 import React from "react";
 
-const AuctionItemCard = props => {
+const ItemCard = props => {
   return (
     <div>
       <img className="card-image" src={props.image} alt="Card image" />
       <div>
         <h4 className="card-title">{props.title}</h4>
-        <p className="card-text">{props.description}</p>
         <a href="#" className="card-btn">
           Details
         </a>
@@ -15,4 +14,4 @@ const AuctionItemCard = props => {
   );
 };
 
-export default AuctionItemCard;
+export default ItemCard;

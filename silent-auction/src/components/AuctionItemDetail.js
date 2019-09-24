@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import AuctionItemCard from "./AuctionItemCard";
-
 const AuctionItemDetail = () => {
   const [itemDetail, setItemDetail] = useState({});
 
@@ -15,17 +13,25 @@ const AuctionItemDetail = () => {
 
   return (
     <section>
-      <AuctionItemCard
-        image={itemDetail.image}
-        title={itemDetail.title}
-        description={itemDetail.description}
-      />
       <div>
-        <p>{itemDetail.highestPrice}</p>
-        <span>{itemDetail.hightestBidder}</span>
+        <img src={itemDetail.image} alt="Card image" />
+        <div>
+          <h4>{itemDetail.title}</h4>
+          <p>{itemDetail.description}</p>
+        </div>
       </div>
       <div>
-        <Timer />
+        <p>Starting Price: {itemDetail.startingPrice}</p>
+        <p>Highest Price: {itemDetail.highestPrice}</p>
+        <span>Highest Bidder: {itemDetail.hightestBidder}</span>
+      </div>
+      <div>
+        <button>Place a bid</button>
+      </div>
+
+      <div>
+        Time Remaining to Bid:
+        <Timer bidDeadline={itemDetail.bidDeadline} />
       </div>
     </section>
   );

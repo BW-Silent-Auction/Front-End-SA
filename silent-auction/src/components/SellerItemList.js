@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import ItemCard from "./ItemCard";
 
-const AuctionItemList = () => {
-  const [itemList, setItemList] = useState([]);
+const SellerItemList = () => {
+  const [sellerItemList, setSellerItemList] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://api.silentauction.com/products`)
-      .then(res => setItemList(res.data))
+      .get(`https://api.silentauction.com/seller/id/products`)
+      .then(res => setSellerItemList(res.data))
       .catch(err => console.log(err));
   }, []);
 
   return (
     <section>
-      {itemList
+      {sellerItemList
         ? itemList.map(item => (
             <ItemCard image={item.image} title={item.title} />
           ))
@@ -24,4 +23,4 @@ const AuctionItemList = () => {
   );
 };
 
-export default AuctionItemList;
+export default SellerItemList;
