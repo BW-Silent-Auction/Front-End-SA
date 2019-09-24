@@ -4,6 +4,9 @@ import {FaUser} from 'react-icons/fa';
 import {FaEnvelope} from 'react-icons/fa';
 import {FaKey} from 'react-icons/fa';
 
+import { connect } from "react-redux";
+import { registerBuyer, registerSeller } from "../../actions";
+
 const FormContainer = styled.div`
   width: 460px;
   margin: auto 100px;
@@ -35,11 +38,19 @@ const RegisterInput = styled.div`
   margin-top: 2%;
  `;
 
-  const handleSubmit = () => {
-    return null
-  }
+function RegisterForm({ registerBuyer, registerSeller }) {
 
-const RegistrationForm = props => {
+  const handleSubmit = (usertype, e) => {
+    e.preventDefault();
+    // if (usertype === "seller") {
+      console.log("seller activated")
+      // registerSeller()
+    // } else {
+    //   console.log("buyer activated")
+    //   // registerBuyer()
+    // }
+  };
+
   return (
     <div className="register-box">
       <FormContainer>
@@ -86,12 +97,22 @@ const RegistrationForm = props => {
             </div>
             <h2>Please Select User Type:</h2>
             <label> 
-            <input id="checkbox" type="checkbox" name="usertype" /> 
+              <input 
+                id="seller" 
+                type="checkbox" 
+                name="usertype"
+                value="seller" /> 
             Seller
             </label> 
-            <label><input id="checkbox" type="checkbox" name="usertype" /> 
-            Buyer </label>
-            <Button type="submit">Sign Up</Button>
+            <label>
+              <input 
+                id="buyer" 
+                type="checkbox" 
+                name="usertype"
+                value="buyer" /> 
+              Buyer 
+            </label>
+            <Button type="submit" value="Submit">Sign Up</Button>
           </RegisterInput>
         </form>
       </FormContainer>
@@ -99,4 +120,16 @@ const RegistrationForm = props => {
   );
 };
 
-export default RegistrationForm;
+const mapStateToProps = state => {
+  return {
+    data: state.data,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { registerBuyer, registerSeller }
+)(RegisterForm);
+
