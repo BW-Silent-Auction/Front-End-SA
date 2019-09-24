@@ -25,7 +25,7 @@ export default function Navigation() {
               </ul>
             </nav>
             <Switch>
-                <Route path="/login/" exact component={Login} />
+                <Route path="/login" component={Login} />
                 <PrivateRoute exact path="/profile/" component={Profile} />
                 <PrivateRoute path="/item-list/" component={ItemList} />
             </Switch>
