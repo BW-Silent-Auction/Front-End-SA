@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import AuctionItemCard from "./AuctionItemCard";
+import ItemCard from "./ItemCard";
 
-const AuctionItemList = () => {
+const AuctionItemList = props => {
   const [itemList, setItemList] = useState([]);
+
+  const auctionItemDetailHandler = id => {
+    props.history.push(`/products/${id}`);
+  };
 
   useEffect(() => {
     axios
@@ -17,10 +21,10 @@ const AuctionItemList = () => {
     <section>
       {itemList
         ? itemList.map(item => (
-            <AuctionItemCard
+            <ItemCard
               image={item.image}
               title={item.title}
-              description={item.description}
+              onDetailClicked={() => auctionItemDetailHandler(item.id)}
             />
           ))
         : null}
