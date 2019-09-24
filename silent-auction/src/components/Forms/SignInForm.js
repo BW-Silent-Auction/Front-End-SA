@@ -1,7 +1,9 @@
 import React from "react";
+import styled from "styled-components";
+
 import {FaUser} from 'react-icons/fa';
 import {FaKey} from 'react-icons/fa';
-import styled from "styled-components";
+
 
 const FormContainer = styled.div`
   width: 460px;
