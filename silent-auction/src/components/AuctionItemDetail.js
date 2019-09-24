@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import AuctionItemCard from "./AuctionItemCard";
-
-const AuctionItemDetail = () => {
+const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
+
+  const clickedHandler = () => {
+    props.history.push(`/products/id/bid`);
+  };
 
   useEffect(() => {
     axios
@@ -15,17 +17,31 @@ const AuctionItemDetail = () => {
 
   return (
     <section>
-      <AuctionItemCard
-        image={itemDetail.image}
-        title={itemDetail.title}
-        description={itemDetail.description}
-      />
       <div>
-        <p>{itemDetail.highestPrice}</p>
-        <span>{itemDetail.hightestBidder}</span>
+        <img src={itemDetail.image} alt="image" />
+        <div>
+          <h4>{itemDetail.title}</h4>
+          <p>{itemDetail.description}</p>
+        </div>
       </div>
       <div>
-        <Timer />
+        <p>Starting Price: {itemDetail.startingPrice}</p>
+        <ul>
+          {itemDetail.bid.map(bid => (
+            <li>
+              <p>Bid Price: {bid.bid_amount}</p>
+              <span>Bidder: {bid.buyer}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        Time Remaining to Bid:
+        <Timer bidDeadline={itemDetail.bidDeadline} />
+      </div>
+      <div>
+        <button onClick={clickedHandler}>Place a bid</button>
       </div>
     </section>
   );
