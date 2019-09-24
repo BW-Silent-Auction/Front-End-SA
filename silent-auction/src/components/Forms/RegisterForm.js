@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from 'axios';
 
 import {FaUser} from 'react-icons/fa';
 import {FaEnvelope} from 'react-icons/fa';
@@ -47,7 +48,7 @@ const RegisterInput = styled.div`
  display: flex;
  flex-direction: column;
 `;
- const Button = styled.button`
+ const Button = styled.input`
     width: 350px;
     padding: 2% 0;
     margin-top: 2%;
@@ -56,37 +57,66 @@ const RegisterInput = styled.div`
     color: black;
     font-weight: bold;
  `;
-
-
-
-
-
   
-function RegisterForm({ registerBuyer, registerSeller }) {
-  const RegistrationForm = props => {
-  const [register, setRegister] = useState({firstname: '', lastname: '', username: '', email: '', password: ''});
+function RegisterForm({ registerBuyer, registerSeller, props }) {
+
+  const [register, setRegister] = useState({
+        first_name: '', 
+        last_name: '', 
+        username: '', 
+        email: '', 
+        password: ''
+  });
+
+  const [check, setCheck] = useState({
+    seller: false,
+    buyer: false
+  })
+
+  const handleCheck = e => {
+    // setCheck(e.target.name)
+    if (e.target.value === "buyer") {
+      setCheck({ buyer: true })
+    } else if (e.target.value === "seller") {
+      setCheck({ seller: true })
+    }
+    console.log(check.seller, check.buyer);
+  }
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });
+    // console.log(register);
   };
     
-  const handleSubmit = (usertype, e) => {
-    e.preventDefault();
-    // if (usertype === "seller") {
-      console.log("seller activated")
-      // registerSeller()
-    // } else {
-    //   console.log("buyer activated")
-    //   // registerBuyer()
-    // }
-  };
+  useEffect(() => console.log("submit with useEffect"));
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (check.buyer === true) {
+  console.log("submit activated");
+    axios
+      .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`, register)
+      .then(res => {      
+        console.log(res.data, "buyer call made");
+        localStorage.setItem('token', res.data);
+        props.history.push('/login');
+      })
+      .catch(err => console.log(err));
+  } else if (check.seller === true) {
+    axios
+      .post(`https://bw-silent-auction.herokuapp.com/api/sellers/register`, register)
+      .then(res => {      
+        console.log(res.data, "seller call made");
+        localStorage.setItem('token', res.data);
+        props.history.push('/login');
+      })
+      .catch(err => console.log(err));
+  }};
 
   return (
     <div>
       <FormContainer>
         <form onSubmit={handleSubmit}>
-
           <RegisterFieldSet>
           <RegisterTitle htmlFor="title">Register for an Account</RegisterTitle>
             <RegisterInput>
@@ -96,7 +126,7 @@ function RegisterForm({ registerBuyer, registerSeller }) {
                   <Input
                     id="firstname"
                     type="text"
-                    name="firstname"
+                    name="first_name"
                     placeholder="First Name"
                     value={register.first_name}
                     onChange={e => handleChange(e)}
@@ -109,7 +139,7 @@ function RegisterForm({ registerBuyer, registerSeller }) {
                   <Input
                     id="lastname"
                     type="text"
-                    name="lastname"
+                    name="last_name"
                     placeholder="Last Name"
                     value={register.last_name}
                     onChange={e => handleChange(e)}
@@ -149,10 +179,10 @@ function RegisterForm({ registerBuyer, registerSeller }) {
                   <FaKey/>
                   <Input
                     id="pass"
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="password"
-                    minlength='8' 
+                    // minlength='8' 
                     required
                     value={register.password}
                     onChange={e => handleChange(e)}
@@ -162,90 +192,33 @@ function RegisterForm({ registerBuyer, registerSeller }) {
               <Checkboxes className='checkbox-container'>
                   <label> 
                   <SubTitle>Please Select User Type:</SubTitle>
-                    <input 
-                    id="sellerChoice" 
-                    type="checkbox" 
-                    name="usertype"
-                    value='seller'
-                    required
-                    /> 
-
+                  <input 
+                  id="sellerChoice" 
+                  type="checkbox" 
+                  name="seller"
+                  value="seller"
+                  // required
+                  checked={check.seller}
+                  onChange={handleCheck}
+                  /> 
                     Seller
                   </label> 
-              <label>
-                <input 
-                id="buyerChoice" 
-                type="checkbox" 
-                name="usertype" 
-                value='buyer'
-                required
-                /> 
-              Buyer 
-              </label>
+                  <label>
+                    <input 
+                    id="buyerChoice" 
+                    type="checkbox" 
+                    name="buyer" 
+                    value="buyer"
+                    // required
+                    checked={check.buyer}
+                    onChange={handleCheck}
+                    /> 
+                  Buyer 
+                  </label>
               </Checkboxes>
-              <Button type="submit">Sign Up</Button>
+              <Button type="submit" value="Submit"></Button>
             </RegisterInput>
             </RegisterFieldSet>
-
-          <RegisterInput>
-            <Input
-              id="firstname"
-              type="text"
-              name="firstname"
-              placeholder="First Name"
-            />
-            <Input
-              id="lastname"
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-            />
-            <div className='input-container'>
-            <FaUser/>
-            <Input
-              id="username"
-              type="text"
-              name="username"
-              placeholder= 'Username'
-            />
-            </div>
-            <div className='input-container'>
-            <FaEnvelope/>
-            <Input 
-              id="email" 
-              type="email" 
-              name="email" 
-              placeholder="Email" />
-            </div>
-            <div className='input-container'>
-            <FaKey/>
-            <Input
-              id="password"
-              type="password"
-              name="password"
-              placeholder="password"
-            />
-            </div>
-            <h2>Please Select User Type:</h2>
-            <label> 
-              <input 
-                id="seller" 
-                type="checkbox" 
-                name="usertype"
-                value="seller" /> 
-            Seller
-            </label> 
-            <label>
-              <input 
-                id="buyer" 
-                type="checkbox" 
-                name="usertype"
-                value="buyer" /> 
-              Buyer 
-            </label>
-            <Button type="submit" value="Submit">Sign Up</Button>
-          </RegisterInput>
-
         </form>
       </FormContainer>
     </div>
@@ -254,9 +227,11 @@ function RegisterForm({ registerBuyer, registerSeller }) {
 
 const mapStateToProps = state => {
   return {
-    data: state.data,
-    isFetching: state.isFetching,
-    error: state.error
+      first_name: state.first_name, 
+      last_name: state.last_name, 
+      username: state.username, 
+      email: state.email, 
+      password: state.password
   };
 };
 

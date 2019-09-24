@@ -8,9 +8,7 @@ import {
   } from "../actions";
   
   const initialState = {
-    data: null,
-    isFetching: false,
-    error: ""
+    userId: null,
   };
   
   export const reducer = (state = initialState, action) => {
