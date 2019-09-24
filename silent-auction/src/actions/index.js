@@ -11,7 +11,7 @@ export const REG_S_DATA_FAILURE = "REG_S_DATA_FAILURE";
 export const registerBuyer = () => dispatch => {
   dispatch({ type: REG_B_DATA_START });
   axios
-    .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`)
+    .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`, )
     .then(res => {
       console.log(res);
       dispatch({ type: REG_B_DATA_SUCCESS, payload: res.data });

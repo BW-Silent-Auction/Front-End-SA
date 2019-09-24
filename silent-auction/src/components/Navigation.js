@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
-import Login from "./Login"
+import RegisterForm from "./Forms/RegisterForm";
+import SignInForm from "./Forms/SignInForm"
 import Profile from "./Profile"
 import ItemList from "./ItemList"
 import PrivateRoute from './PrivateRoute';
@@ -14,7 +15,7 @@ export default function Navigation() {
             <nav>
               <ul>
                 <li>
-                  <NavLink to="/login/">Login</NavLink>
+                  <NavLink to="/register/">Register</NavLink>
                 </li>
                 <li>
                   <NavLink to="/profile/">Profile</NavLink>
@@ -25,7 +26,8 @@ export default function Navigation() {
               </ul>
             </nav>
             <Switch>
-                <Route path="/login" component={Login} />
+                <Route path="/register" component={RegisterForm} />
+                <Route path="/login" component={SignInForm} />
                 <PrivateRoute exact path="/profile/" component={Profile} />
                 <PrivateRoute path="/item-list/" component={ItemList} />
             </Switch>
