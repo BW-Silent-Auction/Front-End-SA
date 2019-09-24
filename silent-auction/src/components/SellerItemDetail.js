@@ -11,6 +11,14 @@ const SellerItemDetail = props => {
       .catch(err => console.log(err));
   }, [props.match.params.id]);
 
+  const editHandler = id => {
+    console.log(id);
+  };
+
+  const deleteHandler = id => {
+    console.log(id);
+  };
+
   return (
     <section>
       <div>
@@ -38,8 +46,10 @@ const SellerItemDetail = props => {
       </div>
 
       <div>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={() => editHandler(sellerItemDetail.id)}>Edit</button>
+        <button onClick={() => deleteHandler(sellerItemDetail.id)}>
+          Delete
+        </button>
       </div>
     </section>
   );
