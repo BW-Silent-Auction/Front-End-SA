@@ -56,7 +56,7 @@ const RegisterInput = styled.div`
 
 
 const RegistrationForm = props => {
-  const [register, setRegister] = useState();
+  const [register, setRegister] = useState({firstname: '', lastname: '', username: '', email: '', password: ''});
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });

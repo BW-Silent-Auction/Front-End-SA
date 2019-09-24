@@ -56,7 +56,7 @@ const ConfirmButton = styled.button`
 `;
 
 const BidderForm = props => {
-    const [price, setPrice] = useState();
+    const [price, setPrice] = useState({newbid: ''});
 
     const handleChange = e => {
         setPrice({ ...price, [e.target.name]: e.target.value });
@@ -76,8 +76,8 @@ const BidderForm = props => {
             <FaDollarSign />
             <PriceInput
               type="number"
-              name="currency-field"
-              id="currency-field"
+              name="newbid"
+              id="newbid"
               min="0.01"
               step="0.01"
               max="100000"

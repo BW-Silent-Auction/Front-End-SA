@@ -43,7 +43,7 @@ const SignInFieldSet = styled.fieldset`
 
 
 const SignInForm = props => {
-  const [signIn, setSignIn] = useState();
+  const [signIn, setSignIn] = useState({username: '', password: ''});
 
   const handleChange = e => {
     setSignIn({ ...signIn, [e.target.name]: e.target.value });

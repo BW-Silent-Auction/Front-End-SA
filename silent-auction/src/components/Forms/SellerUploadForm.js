@@ -51,7 +51,7 @@ const NewItemButton = styled.button`
 
 
 const SellerForm = props => {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState({myFile: '', itemname: '', price: '', description: ''});
 
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
