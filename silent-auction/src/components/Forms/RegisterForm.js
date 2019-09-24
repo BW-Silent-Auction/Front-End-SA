@@ -34,12 +34,17 @@ const RegisterInput = styled.div`
   padding: 1.2% 0;
   margin-top: 2%;
  `;
+
+  const handleSubmit = () => {
+    return null
+  }
+
 const RegistrationForm = props => {
   return (
-    <div>
+    <div className="register-box">
       <FormContainer>
-      <RegisterTitle htmlFor="title">Sig In</RegisterTitle>
-        <form>
+      <RegisterTitle htmlFor="title">Sign In</RegisterTitle>
+        <form onSubmit={handleSubmit}>
           <RegisterInput>
             <Input
               id="firstname"
@@ -64,13 +69,17 @@ const RegistrationForm = props => {
             </div>
             <div className='input-container'>
             <FaEnvelope/>
-            <Input id="email" type="email" name="email" placeholder="Email" />
+            <Input 
+              id="email" 
+              type="email" 
+              name="email" 
+              placeholder="Email" />
             </div>
             <div className='input-container'>
             <FaKey/>
             <Input
               id="password"
-              type="text"
+              type="password"
               name="password"
               placeholder="password"
             />
