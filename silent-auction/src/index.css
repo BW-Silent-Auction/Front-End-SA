@@ -36,3 +36,9 @@ li {
 a {
   text-decoration: none;
 }
+
+.register-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}

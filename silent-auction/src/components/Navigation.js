@@ -1,12 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import Login from "./Login"
 import Profile from "./Profile"
 import ItemList from "./ItemList"
-
-// TODO: Add missing tabs below
-// Take a look at React Semantic UI tabs 
-// https://react.semantic-ui.com/modules/tab/
+import PrivateRoute from './PrivateRoute';
 
 export default function Navigation() {
 
@@ -27,10 +24,11 @@ export default function Navigation() {
                 </li>
               </ul>
             </nav>
-    
-            <Route path="/login/" exact component={Login} />
-            <Route path="/profile/" component={Profile} />
-            <Route path="/item-list/" component={ItemList} />
+            <Switch>
+                <Route path="/login/" exact component={Login} />
+                <PrivateRoute exact path="/profile/" component={Profile} />
+                <PrivateRoute path="/item-list/" component={ItemList} />
+            </Switch>
           </div>
         </Router>
         </div>
