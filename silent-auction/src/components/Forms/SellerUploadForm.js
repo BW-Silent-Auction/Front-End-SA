@@ -76,9 +76,17 @@ const SellerForm = props => {
 
   useEffect(() => {
       if (props.edit === true) {
-        setItem(props.editItem);
+        setItem({
+            description: props.Edescription,
+            starting_price: props.EstartingPrice,
+            title: props.Etitle,
+            image: props.Eimage
+        })
+        delete item.seller_id;
+        console.log(item);
+        console.log(props.Eid)
       }
-  })
+  }, [props.edit, props.editItem])
 
   const handleSubmit = e => {
     console.log(item);
@@ -103,10 +111,10 @@ const SellerForm = props => {
     console.log(props.editItem)
     // setItem(props.editItem);
     axios
-    .put(`https://bw-silent-auction.herokuapp.com/api/products/:id`, props.editItem)
+    .put(`https://bw-silent-auction.herokuapp.com/api/products/${props.Eid}`, item)
     .then(res => {
         console.log(res);
-        console.log("new item posted!")
+        console.log("item edited!!")
         props.history.push('/seller-item-list')
     })
     .catch(err => console.log(err))

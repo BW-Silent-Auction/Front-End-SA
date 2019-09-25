@@ -62,7 +62,14 @@ const [edit, setEdit] = useState(false)
         </section>
     </section>
     <section className="sell-upload-form">
-      {edit === true ? <SellerUploadForm {...props} editItem={editItem} edit={edit} /> : <SellerUploadForm {...props} />}
+      {edit === true ? <SellerUploadForm 
+      {...props} 
+      Edescription={editItem.description} 
+      EstartingPrice={editItem.starting_price}
+      Etitle={editItem.title}
+      Eimage={editItem.image}
+      Eid={editItem.id}
+      edit={edit} /> : <SellerUploadForm {...props} />}
     </section>
     </>
   );
