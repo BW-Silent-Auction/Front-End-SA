@@ -1,16 +1,61 @@
 import React from "react";
 import Timer from "./Timer";
+import styled from "styled-components";
+import { FaClock } from "react-icons/fa";
+
+const SellerItemCards = styled.div`
+background: #eff4ff;
+color: black;
+width: 600px;
+height: auto;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+font-size: 1rem;
+padding:2%;
+margin: auto;
+margin-top: 5%;
+box-shadow: -11px 8px 10px grey; 
+border-radius: 5px;
+`;
+const SellerSplitInfo = styled.div`
+  display: flex;
+`;
+const SellerMainDetails = styled.div`
+
+  border: 1px solid black;
+  padding: 5%;
+  margin-right: 6%;
+`;
+const SellerItemImg = styled.img`
+  max-width: 300px;
+  height: auto;
+`;
+const SellerButtons = styled.button`
+    width: 100px;
+    padding: 4% 0;
+    margin: 10px auto 10px auto;
+    background-color: #66b3ff;
+    color: black;
+    border-radius: 3px;
+    font-weight: bold;
+`;
+const SellerPriceAndTime = styled.div`
+  text-align: center;
+`;
 
 const SellerItemCard = props => {
   return (
-    <section>
-      <div>
-        <img src={props.image} alt="Card image" />
+    <SellerItemCards>
+      <SellerSplitInfo>
+      <SellerMainDetails>
+        <SellerItemImg src={props.image} alt="Card image" />
         <div>
           <h4>{props.title}</h4>
           <p>{props.description}</p>
         </div>
-      </div>
+      </SellerMainDetails>
+      <SellerPriceAndTime>
       <div>
         <p>Starting Bid Price: {props.startingPrice}</p>
         {/* <ul>
@@ -26,11 +71,13 @@ const SellerItemCard = props => {
         Time remaining to bid:
         {/* <Timer bidDeadline={props.bidDeadline} /> */}
       </div>
+      </SellerPriceAndTime>
+      </SellerSplitInfo>
       <div>
-        <button onClick={props.edit}>Edit</button>
-        <button onClick={props.delete}>Delete</button>
+        <SellerButtons onClick={props.edit}>Edit</SellerButtons>
+        <SellerButtons onClick={props.delete}>Delete</SellerButtons>
       </div>
-    </section>
+    </SellerItemCards>
   );
 };
 

@@ -5,8 +5,9 @@ const ItemCards = styled.div`
   background: #eff4ff;
   height: auto;
   border-radius: 4px;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: -14px 12px 14px 0px rgb(52, 28, 9), 0 15px 12px rgba(0, 0, 0, 0.22);
   text-align: center;
+  border: .5px dotted #341C09;
 `;
 
 const CardImg = styled.img`

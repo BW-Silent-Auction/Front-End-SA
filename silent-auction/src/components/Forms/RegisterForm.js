@@ -14,13 +14,12 @@ import { registerBuyer, registerSeller } from "../../actions";
 const FormContainer = styled.div`
 
     width: 460px;
-    margin: auto;
+    margin: 5% auto 10% auto;
     padding: 6%;
     border: 1px solid black;
     background-color: white;
     box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
     font-size: .8rem;
-    margin-top: 5%;
     border-radius: 10px;
     text-align: center;
 `;
