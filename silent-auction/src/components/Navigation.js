@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import RegisterForm from "./Forms/RegisterForm";
 import SignInForm from "./Forms/SignInForm";
+import SellSignInForm from "./Forms/SellSignInForm";
 import Profile from "./Profile";
 import AuctionItemList from "./AuctionItemList";
 import SellerItemList from "./SellerItemList";
@@ -34,19 +35,26 @@ export default function Navigation() {
                   <NavLink to="/register/">Register</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/login/">Login</NavLink>
+                  <NavLink to="/buyer-login/">Buyer Login</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/seller-login/">Seller Login</NavLink>
                 </li>
                 <li>
                   <NavLink to="/profile/">Profile</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/auction-item-list/">List</NavLink>
+                  <NavLink to="/auction-item-list/">Buyer List</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/seller-item-list/">Seller List</NavLink>
                 </li>
               </ul>
             </Nav>
             <Switch>
                 <Route path="/register" component={RegisterForm} />
-                <Route path="/login" component={SignInForm} />
+                <Route path="/buyer-login" component={SignInForm} />
+                <Route path="/seller-login" component={SellSignInForm} />
                 <Route exact path="/profile/" component={Profile} /> 
                 <Route path="/auction-item-list/" component={AuctionItemList} />
                 <Route path="/seller-item-list/" component={SellerItemList} />

@@ -1,5 +1,5 @@
 import React from "react";
-// import RegistrationForm from './components/Forms/RegisterForm.js'; 
+import RegisterForm from "./components/Forms/RegisterForm.js";
 import Navigation from "./components/Navigation.js";
 import './index.css';
 import styled from 'styled-components';
@@ -26,7 +26,6 @@ export default function App() {
   return (
     <MainApp>
       <Navigation />
-      {/* <RegistrationForm /> */}
     </MainApp>
   );
-};
+}

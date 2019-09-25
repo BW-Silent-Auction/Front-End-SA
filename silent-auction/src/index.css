@@ -49,7 +49,7 @@ main {
 ul {
   display: flex;
   justify-content: space-between;
-  margin-left: 55%;
+  margin-left: 15%;
   margin-right: 2%;
 }
 
@@ -65,4 +65,9 @@ a {
   display: flex;
   justify-content: center;
   margin-top: 100px;
+}
+
+.card-image {
+  width: 100px;
+  height: auto;
 }

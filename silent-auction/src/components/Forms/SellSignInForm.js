@@ -8,7 +8,7 @@ import { FaKey } from "react-icons/fa";
 
 const FormContainer = styled.div`
     width: 460px;
-    margin: auto;
+    margin: auto 100px;
     padding: 5%;
     border: 1px solid black;
     background-color: white;
@@ -22,22 +22,21 @@ const FormContainer = styled.div`
     border-radius: 10px;
 `;
 const SignInTitle = styled.legend`
-    font-size: 2rem;
+    font-size: 1.5rem;
 `;
 const Input = styled.input`
     margin-top: 3%;
     width: 333px;
-    padding: 4% 0;
+    padding: 2% 0;
 `;
 const Button = styled.button`
     width: 350px;
-    padding: 4% 0;
+    padding: 3% 0;
     margin-top: 2.5%;
     background-color: #66b3ff;
     color: black;
     border-radius: 3px;
     font-weight: bold;
-    font-size: .9rem;
 `;
 const SignInFieldSet = styled.fieldset`
     border: none;
@@ -59,11 +58,11 @@ const SignInForm = props => {
     console.log(signIn);
     e.preventDefault();
     axios
-    .post(`https://bw-silent-auction.herokuapp.com/api/buyers/login`, signIn)
+    .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
     .then(res => {      
-      console.log(res, "buyer login call made");
-      localStorage.setItem('token', res.data);
-      props.history.push('/auction-item-list');
+        console.log(res.data, "seller login call made");
+        localStorage.setItem('token', res.data);
+        props.history.push('/seller-item-list');
     })
     .catch(err => console.log(err));
   };
@@ -72,7 +71,7 @@ const SignInForm = props => {
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <SignInFieldSet>
-          <SignInTitle htmlFor="title">Bidder Sign In</SignInTitle>
+          <SignInTitle htmlFor="title">Seller Sign In</SignInTitle>
           <div className="input-container">
             <label>
               <FaUser />

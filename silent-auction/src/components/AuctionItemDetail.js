@@ -50,14 +50,14 @@ const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
 
   const clickedHandler = () => {
-    props.history.push(`/products/1/bid`);
+    props.history.push(`/products/:id/bid`);
     console.log("clicked")
   };
 
   useEffect(() => {
     console.log(props);
     axios
-      .get(`https://bw-silent-auction.herokuapp.com/api/products/10`)
+      .get(`https://bw-silent-auction.herokuapp.com/api/products/:id`)
       .then(res => {
         console.log(res.data)
         setItemDetail(res.data)

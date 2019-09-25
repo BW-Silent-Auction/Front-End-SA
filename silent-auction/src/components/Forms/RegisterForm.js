@@ -2,17 +2,17 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 
-import {FaUser} from 'react-icons/fa';
-import {FaEnvelope} from 'react-icons/fa';
-import {FaKey} from 'react-icons/fa';
-import {FaFont} from 'react-icons/fa';
-import {FaBold} from 'react-icons/fa';
-
+import { FaUser } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { FaFont } from "react-icons/fa";
+import { FaBold } from "react-icons/fa";
 
 import { connect } from "react-redux";
 import { registerBuyer, registerSeller } from "../../actions";
 
 const FormContainer = styled.div`
+
     width: 460px;
     margin: auto;
     padding: 6%;
@@ -25,29 +25,33 @@ const FormContainer = styled.div`
     text-align: center;
 `;
 const RegisterFieldSet = styled.fieldset`
-    border: none;
+  border: none;
 `;
 const RegisterTitle = styled.legend`
     font-size: 2rem;
 `;
 const RegisterInput = styled.div`
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+
  const Input = styled.input`
     margin-top: 1%;
     width: 350px;
     padding: 4% 0;
  `;
+
  const SubTitle = styled.h2`
     font-size: .9rem;
  `;
+
  const Checkboxes = styled.div`
  display: flex;
  flex-direction: column;
 `;
+
  const Button = styled.input`
     width: 350px;
     padding: 4% 0;
@@ -100,7 +104,7 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       .then(res => {      
         console.log(res.data, "buyer call made");
         // localStorage.setItem('token', res.data);
-        history.push('/login');
+        history.push('/buyer-login');
       })
       .catch(err => console.log(err));
   } else if (check.seller === true) {
@@ -109,7 +113,7 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       .then(res => {      
         console.log(res.data, "seller call made");
         // localStorage.setItem('token', res.data);
-        history.push('/login');
+        history.push('/seller-login');
       })
       .catch(err => console.log(err));
   }};
@@ -119,11 +123,13 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       <FormContainer>
         <form onSubmit={handleSubmit}>
           <RegisterFieldSet>
-          <RegisterTitle htmlFor="title">Register for an Account</RegisterTitle>
+            <RegisterTitle htmlFor="title">
+              Register for an Account
+            </RegisterTitle>
             <RegisterInput>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaFont/>
+                  <FaFont />
                   <Input
                     id="firstname"
                     type="text"
@@ -134,9 +140,9 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaBold/>
+                  <FaBold />
                   <Input
                     id="lastname"
                     type="text"
@@ -147,37 +153,37 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaUser/>
+                  <FaUser />
                   <Input
                     id="username"
                     type="text"
                     name="username"
-                    placeholder='Username'
+                    placeholder="Username"
                     required
                     value={register.username}
                     onChange={e => handleChange(e)}
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaEnvelope/>
-                  <Input 
-                  id="email" 
-                  type="email" 
-                  name="email" 
-                  required 
-                  placeholder="user@example.com"
-                  value={register.email}
-                  onChange={e => handleChange(e)} 
+                  <FaEnvelope />
+                  <Input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="user@example.com"
+                    value={register.email}
+                    onChange={e => handleChange(e)}
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaKey/>
+                  <FaKey />
                   <Input
                     id="pass"
                     type="password"
@@ -190,8 +196,8 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                   />
                 </label>
               </div>
-              <Checkboxes className='checkbox-container'>
-                  <label> 
+              <Checkboxes className="checkbox-container">
+                <label>
                   <SubTitle>Please Select User Type:</SubTitle>
                   <input 
                   id="sellerChoice" 
@@ -224,20 +230,19 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       </FormContainer>
     </div>
   );
+
 };
+// const mapStateToProps = state => {
+//   return {
+//     data: state.data,
+//     isFetching: state.isFetching,
+//     error: state.error
+//   };
+// };
 
-const mapStateToProps = state => {
-  return {
-      first_name: state.first_name, 
-      last_name: state.last_name, 
-      username: state.username, 
-      email: state.email, 
-      password: state.password
-  };
-};
+// export default connect(
+//   mapStateToProps,
+//   { registerBuyer, registerSeller }
+// )(RegisterForm);
 
-export default connect(
-  mapStateToProps,
-  { registerBuyer, registerSeller }
-)(RegisterForm);
-
+export default RegisterForm;
