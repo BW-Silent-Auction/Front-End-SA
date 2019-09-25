@@ -61,8 +61,8 @@ const SignInForm = props => {
     .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
     .then(res => {      
       console.log(res, "buyer login call made");
-      // localStorage.setItem('token', res.data);
-      // props.history.push('/auction-item-list');
+      localStorage.setItem('token', res.data);
+      props.history.push('/auction-item-list');
       // if (!res.data) {
       //   axios
       //   .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
