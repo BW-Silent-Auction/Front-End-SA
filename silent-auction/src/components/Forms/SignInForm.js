@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import { FaUser } from "react-icons/fa";
 import { FaKey } from "react-icons/fa";
@@ -43,15 +44,38 @@ const SignInFieldSet = styled.fieldset`
 
 
 const SignInForm = props => {
-  const [signIn, setSignIn] = useState({username: '', password: ''});
+  const [signIn, setSignIn] = useState({
+    username: '', 
+    password: ''
+  });
 
   const handleChange = e => {
+    // console.log(signIn);
     setSignIn({ ...signIn, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = e => {
+    console.log(signIn)
     e.preventDefault();
+    axios
+    .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
+    .then(res => {      
+      console.log(res, "buyer login call made");
+      // localStorage.setItem('token', res.data);
+      // props.history.push('/auction-item-list');
+      // if (!res.data) {
+      //   axios
+      //   .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
+      //   .then(res => {      
+      //     console.log(res.data, "seller login call made");
+      //     localStorage.setItem('token', res.data);
+      //     props.history.push('/seller-item-list');
+      //   })
+      // }
+    })
+    .catch(err => console.log(err));
   };
+  
   return (
     <FormContainer>
       <form onSubmit={handleSubmit}>

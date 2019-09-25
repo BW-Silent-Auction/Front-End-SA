@@ -12,8 +12,11 @@ const AuctionItemList = props => {
 
   useEffect(() => {
     axios
-      .get(`https://api.silentauction.com/products`)
-      .then(res => setItemList(res.data))
+      .get(`https://bw-silent-auction.herokuapp.com/api/products`)
+      .then(res => {
+        console.log(res.data)
+        setItemList(res.data)
+      })
       .catch(err => console.log(err));
   }, []);
 

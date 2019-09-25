@@ -58,7 +58,7 @@ const RegisterInput = styled.div`
     font-weight: bold;
  `;
   
-function RegisterForm({ registerBuyer, registerSeller, props }) {
+function RegisterForm({ registerBuyer, registerSeller, history }) {
 
   const [register, setRegister] = useState({
         first_name: '', 
@@ -98,8 +98,8 @@ function RegisterForm({ registerBuyer, registerSeller, props }) {
       .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`, register)
       .then(res => {      
         console.log(res.data, "buyer call made");
-        localStorage.setItem('token', res.data);
-        props.history.push('/login');
+        // localStorage.setItem('token', res.data);
+        history.push('/login');
       })
       .catch(err => console.log(err));
   } else if (check.seller === true) {
@@ -107,8 +107,8 @@ function RegisterForm({ registerBuyer, registerSeller, props }) {
       .post(`https://bw-silent-auction.herokuapp.com/api/sellers/register`, register)
       .then(res => {      
         console.log(res.data, "seller call made");
-        localStorage.setItem('token', res.data);
-        props.history.push('/login');
+        // localStorage.setItem('token', res.data);
+        history.push('/login');
       })
       .catch(err => console.log(err));
   }};

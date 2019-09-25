@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axiosWithAuth from '../../utils/axiosWithAuth';
+import axios from 'axios';
 
 import { FaDollarSign } from "react-icons/fa";
 
@@ -56,7 +58,10 @@ const ConfirmButton = styled.button`
 `;
 
 const BidderForm = props => {
-    const [price, setPrice] = useState({newbid: ''});
+    const [price, setPrice] = useState({
+      buyer_id: 1,
+      bid_amount: ''
+    });
 
     const handleChange = e => {
         setPrice({ ...price, [e.target.name]: e.target.value });
@@ -64,6 +69,15 @@ const BidderForm = props => {
     
       const handleSubmit = e => {
         e.preventDefault();
+        console.log(price)
+        // axiosWithAuth()
+        axios
+        .post(`https://bw-silent-auction.herokuapp.com/api/products/1/bids`, price)
+        .then(res => {
+          console.log(res);
+          setPrice({ bid_amount: res.data })
+        })
+        .catch(err => console.log(err));
       };
 
   return (
@@ -76,14 +90,14 @@ const BidderForm = props => {
             <FaDollarSign />
             <PriceInput
               type="number"
-              name="newbid"
+              name="bid_amount"
               id="newbid"
               min="0.01"
               step="0.01"
               max="100000"
               placeholder="0.00"
               required
-              value={price}
+              value={price.bid_amount}
               onChange={e => handleChange(e)}
             />
           </label>
