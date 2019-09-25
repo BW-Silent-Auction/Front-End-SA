@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from 'axios';
+// import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 import { FaTag } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
@@ -51,19 +53,68 @@ const NewItemButton = styled.button`
 
 
 const SellerForm = props => {
-  const [item, setItem] = useState({myFile: '', itemname: '', price: '', description: ''});
+
+    const id = localStorage.getItem("id")
+
+  const [item, setItem] = useState({
+    seller_id: id,
+    title: '',
+    description: '',
+    image: null,
+    starting_price: ''
+    });
 
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
+     console.log(item);
   };
 
+  const handlePickChange = e => {
+    setItem({ ...item, [e.target.name]: e.target.files[0] });
+     console.log(item);
+  }
+
+  useEffect(() => {
+      if (props.edit === true) {
+        setItem(props.editItem);
+      }
+  })
+
   const handleSubmit = e => {
+    console.log(item);
     e.preventDefault();
-  };
+
+    if (props.edit === false) {
+    const fd = new FormData();
+    fd.append("seller_id", item.seller_id)
+    fd.append("title", item.title)
+    fd.append("description", item.description)
+    fd.append("image", item.image, item.image.name)
+    fd.append("starting_price", item.starting_price)
+    axios
+    .post(`https://bw-silent-auction.herokuapp.com/api/products`, fd)
+    .then(res => {
+        console.log(res);
+        console.log("new item posted!")
+        props.history.push('/seller-item-list')
+    })
+    .catch(err => console.log(err))
+  } else if (props.edit === true) {
+    console.log(props.editItem)
+    // setItem(props.editItem);
+    axios
+    .put(`https://bw-silent-auction.herokuapp.com/api/products/:id`, props.editItem)
+    .then(res => {
+        console.log(res);
+        console.log("new item posted!")
+        props.history.push('/seller-item-list')
+    })
+    .catch(err => console.log(err))
+  }};
 
   return (
     <SellerFormContainer>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}                         encType="multipart/form-data">
         <UploadFieldSet>
             <UploadTitle>Add New Item</UploadTitle>
                 <div className="input-file">
@@ -72,9 +123,9 @@ const SellerForm = props => {
                         <Inputs
                         id="item-img"
                         type="file"
-                        name="myFile"
-                        value={item.image}
-                        onChange={e => handleChange(e)}
+                        name="image"
+                        // files={item.image}
+                        onChange={handlePickChange}
                         />
                     </label>
                 </div>
@@ -84,10 +135,10 @@ const SellerForm = props => {
                         <Inputs
                         id="itemnam"
                         type="text"
-                        name="itemname"
+                        name="title"
                         placeholder="Enter Item Name"
                         required
-                        value= {item.name}
+                        value= {item.title}
                         onChange={e => handleChange(e)}
                         />
                     </label>
@@ -97,13 +148,13 @@ const SellerForm = props => {
                     <Inputs
                         id="price"
                         type="number"
-                        name="price"
+                        name="starting_price"
                         min="0.00"
                         max="10000.00"
                         step="any"
                         placeholder="Enter Starting Price"
                         required
-                        value={item.price}
+                        value={item.starting_price}
                         onChange={e => handleChange(e)}
                     />
                     </label>

@@ -103,7 +103,7 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`, register)
       .then(res => {      
         console.log(res.data, "buyer call made");
-        // localStorage.setItem('token', res.data);
+        localStorage.setItem('id', res.data.id);
         history.push('/buyer-login');
       })
       .catch(err => console.log(err));
@@ -112,7 +112,7 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       .post(`https://bw-silent-auction.herokuapp.com/api/sellers/register`, register)
       .then(res => {      
         console.log(res.data, "seller call made");
-        // localStorage.setItem('token', res.data);
+        localStorage.setItem('id', res.data.id);
         history.push('/seller-login');
       })
       .catch(err => console.log(err));
