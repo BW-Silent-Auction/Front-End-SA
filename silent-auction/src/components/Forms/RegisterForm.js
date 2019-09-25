@@ -120,7 +120,7 @@ function RegisterForm({ registerBuyer, registerSeller }) {
       .then(res => {      
         console.log(res.data, "buyer call made");
         // localStorage.setItem('token', res.data);
-        history.push('/login');
+        history.push('/buyer-login');
       })
       .catch(err => console.log(err));
   } else if (check.seller === true) {
@@ -129,7 +129,7 @@ function RegisterForm({ registerBuyer, registerSeller }) {
       .then(res => {      
         console.log(res.data, "seller call made");
         // localStorage.setItem('token', res.data);
-        history.push('/login');
+        history.push('/seller-login');
       })
       .catch(err => console.log(err));
   }};

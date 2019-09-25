@@ -58,11 +58,11 @@ const SignInForm = props => {
     console.log(signIn);
     e.preventDefault();
     axios
-    .post(`https://bw-silent-auction.herokuapp.com/api/buyers/login`, signIn)
+    .post(`https://bw-silent-auction.herokuapp.com/api/sellers/login`, signIn)
     .then(res => {      
-      console.log(res, "buyer login call made");
-      localStorage.setItem('token', res.data);
-      props.history.push('/auction-item-list');
+        console.log(res.data, "seller login call made");
+        localStorage.setItem('token', res.data);
+        props.history.push('/seller-item-list');
     })
     .catch(err => console.log(err));
   };
@@ -71,7 +71,7 @@ const SignInForm = props => {
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <SignInFieldSet>
-          <SignInTitle htmlFor="title">Bidder Sign In</SignInTitle>
+          <SignInTitle htmlFor="title">Seller Sign In</SignInTitle>
           <div className="input-container">
             <label>
               <FaUser />

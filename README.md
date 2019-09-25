@@ -2,4 +2,4 @@
 
 This is the Zeit deployment link:
 
-https://silent-auction.bw-silent-auction.now.sh/
+https://silent-auction-cameron777.bw-silent-auction.now.sh

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
 import SellerItemCard from "./SellerItemCard";
+
 
 const SellerItemList = props => {
   const [sellerItemList, setSellerItemList] = useState([]);
@@ -8,7 +12,6 @@ const SellerItemList = props => {
   useEffect(() => {
     axios
       .get(`https://bw-silent-auction.herokuapp.com/api/sellers/1/auctions`)
-
       .then(res => setSellerItemList(res.data))
       .catch(err => console.log(err));
   }, []);
