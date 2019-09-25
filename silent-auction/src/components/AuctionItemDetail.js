@@ -35,8 +35,7 @@ const ItemImg = styled.img`
 const PlaceBidButton = styled.button`
     width: 200px;
     padding: 4% 0;
-    margin-top: 4%;
-    margin-left: 15%;
+    margin: 10px auto 10px auto;
     background-color: #66b3ff;
     color: black;
     border-radius: 3px;
