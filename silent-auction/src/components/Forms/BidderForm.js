@@ -75,7 +75,8 @@ const BidderForm = props => {
         .post(`https://bw-silent-auction.herokuapp.com/api/products/1/bids`, price)
         .then(res => {
           console.log(res);
-          setPrice({ bid_amount: res.data })
+          setPrice({ bid_amount: res.data });
+          props.history.push('/products/:id')
         })
         .catch(err => console.log(err));
       };

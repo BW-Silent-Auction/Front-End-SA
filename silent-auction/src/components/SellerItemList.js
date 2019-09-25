@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import ItemCard from "./ItemCard";
 
 const SellerItemList = props => {
@@ -11,8 +12,11 @@ const SellerItemList = props => {
 
   useEffect(() => {
     axios
-      .get(`https://api.silentauction.com/seller/id/products`)
-      .then(res => setSellerItemList(res.data))
+      .get(`/api/sellers/:id/auctions`)
+      .then(res => {
+        console.log(res.data)
+        setSellerItemList(res.data)
+      })
       .catch(err => console.log(err));
   }, []);
 
