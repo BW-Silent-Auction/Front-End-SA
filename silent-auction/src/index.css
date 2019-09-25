@@ -47,3 +47,16 @@ a {
   width: 100px;
   height: auto;
 }
+
+.sell-item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.sell-item-list img {
+  width: 300px;
+}
+
+.sell-upload-form {
+  width: 30%;
+}

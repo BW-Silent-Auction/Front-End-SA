@@ -6,7 +6,6 @@ export default function App() {
   return (
     <main>
       <Navigation />
-      <RegisterForm />
     </main>
   );
 }

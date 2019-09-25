@@ -45,7 +45,7 @@ export default function Navigation() {
               </ul>
             </nav>
             <Switch>
-                <Route path="/register" component={RegisterForm} />
+                <Route exact path="/register" component={RegisterForm} />
                 <Route path="/buyer-login" component={SignInForm} />
                 <Route path="/seller-login" component={SellSignInForm} />
                 <Route exact path="/profile/" component={Profile} /> 
