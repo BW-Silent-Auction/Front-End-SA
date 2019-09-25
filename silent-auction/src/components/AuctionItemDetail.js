@@ -5,13 +5,18 @@ const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
 
   const clickedHandler = () => {
-    props.history.push(`/products/id/bid`);
+    props.history.push(`/products/1/bid`);
+    console.log("clicked")
   };
 
   useEffect(() => {
+    console.log(props);
     axios
-      .get(`https://api.silentauction.com/products/id`)
-      .then(res => setItemDetail(res.data))
+      .get(`https://bw-silent-auction.herokuapp.com/api/products/10`)
+      .then(res => {
+        console.log(res.data)
+        setItemDetail(res.data)
+      })
       .catch(err => console.log(err));
   }, [props.match.params.id]);
 
@@ -25,20 +30,20 @@ const AuctionItemDetail = props => {
         </div>
       </div>
       <div>
-        <p>Starting Price: {itemDetail.startingPrice}</p>
+        <p>Starting Price: {itemDetail.starting_price}</p>
         <ul>
-          {itemDetail.bid.map(bid => (
+          {/* {itemDetail ? itemDetail.bid.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
               <span>Bidder: {bid.buyer}</span>
             </li>
-          ))}
+          )) : null} */}
         </ul>
       </div>
 
       <div>
         Time Remaining to Bid:
-        <Timer bidDeadline={itemDetail.bidDeadline} />
+        {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
       </div>
       <div>
         <button onClick={clickedHandler}>Place a bid</button>

@@ -19,14 +19,14 @@ const SellerItemList = props => {
   return (
     <section>
       {sellerItemList
-        ? itemList.map(item => (
+        /*? itemList*/.map(item => (
             <ItemCard
               image={item.image}
               title={item.title}
               onDetailClicked={() => sellerItemDetailHandler(item.id)}
             />
           ))
-        : null}
+        /*: null*/}
     </section>
   );
 };
