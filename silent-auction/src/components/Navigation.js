@@ -8,6 +8,13 @@ import SellerItemList from "./SellerItemList";
 import PrivateRoute from './PrivateRoute';
 import AuctionItemDetail from './AuctionItemDetail';
 import BidderForm from './Forms/BidderForm.js';
+import styled from  'styled-components';
+
+const Nav = styled.nav`
+  border-bottom: 1px solid #66b3ff;
+  padding-bottom: 3%;
+`;
+
 
 export default function Navigation() {
 
@@ -15,7 +22,7 @@ export default function Navigation() {
         <div>
         <Router>
           <div>
-            <nav>
+            <Nav>
               <ul>
               {/* <li>
                   <NavLink to="/products/:id/bid">BidForm</NavLink>
@@ -36,7 +43,7 @@ export default function Navigation() {
                   <NavLink to="/auction-item-list/">List</NavLink>
                 </li>
               </ul>
-            </nav>
+            </Nav>
             <Switch>
                 <Route path="/register" component={RegisterForm} />
                 <Route path="/login" component={SignInForm} />

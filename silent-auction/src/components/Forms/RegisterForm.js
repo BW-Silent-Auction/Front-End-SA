@@ -14,8 +14,8 @@ import { registerBuyer, registerSeller } from "../../actions";
 
 const FormContainer = styled.div`
     width: 460px;
-    margin: auto 100px;
-    padding: 5%;
+    margin: auto;
+    padding: 6%;
     border: 1px solid black;
     background-color: white;
     box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
@@ -28,7 +28,7 @@ const RegisterFieldSet = styled.fieldset`
     border: none;
 `;
 const RegisterTitle = styled.legend`
-    font-size: 1.5rem;
+    font-size: 2rem;
 `;
 const RegisterInput = styled.div`
     padding: 1rem;
@@ -39,7 +39,7 @@ const RegisterInput = styled.div`
  const Input = styled.input`
     margin-top: 1%;
     width: 350px;
-    padding: 2% 0;
+    padding: 4% 0;
  `;
  const SubTitle = styled.h2`
     font-size: .9rem;
@@ -50,12 +50,13 @@ const RegisterInput = styled.div`
 `;
  const Button = styled.input`
     width: 350px;
-    padding: 2% 0;
+    padding: 4% 0;
     margin-top: 2%;
     border-radius: 3px;
     background-color: #66b3ff;
     color: black;
     font-weight: bold;
+    font-size: .9rem;
  `;
   
 function RegisterForm({ registerBuyer, registerSeller, history }) {
