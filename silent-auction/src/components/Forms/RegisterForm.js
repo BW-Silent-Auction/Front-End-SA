@@ -47,16 +47,7 @@ const Checkboxes = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Button = styled.button`
-  width: 350px;
-  padding: 2% 0;
-  margin-top: 2%;
-  border-radius: 3px;
-  background-color: #66b3ff;
-  color: black;
-  font-weight: bold;
-`;
-<<<<<<< HEAD
+
  const Button = styled.input`
     width: 350px;
     padding: 2% 0;
@@ -91,23 +82,11 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
     }
     console.log(check.seller, check.buyer);
   }
-=======
-
-function RegisterForm({ registerBuyer, registerSeller }) {
-  const [register, setRegister] = useState({
-    firstname: "",
-    lastname: "",
-    username: "",
-    email: "",
-    password: ""
-  });
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });
     // console.log(register);
   };
-<<<<<<< HEAD
     
   useEffect(() => console.log("submit with useEffect"));
 
@@ -134,24 +113,6 @@ function RegisterForm({ registerBuyer, registerSeller }) {
       .catch(err => console.log(err));
   }};
 
-=======
-
-  useEffect(() => {
-    console.log(`give me sth`);
-  });
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    // if (usertype === "seller") {
-    console.log("seller activated");
-    // registerSeller()
-    // } else {
-    //   console.log("buyer activated")
-    //   // registerBuyer()
-    // }
-  };
-
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
   return (
     <div>
       <FormContainer>
@@ -223,11 +184,7 @@ function RegisterForm({ registerBuyer, registerSeller }) {
                     type="password"
                     name="password"
                     placeholder="password"
-<<<<<<< HEAD
                     // minlength='8' 
-=======
-                    minlength="8"
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
                     required
                     value={register.password}
                     onChange={e => handleChange(e)}
@@ -237,7 +194,6 @@ function RegisterForm({ registerBuyer, registerSeller }) {
               <Checkboxes className="checkbox-container">
                 <label>
                   <SubTitle>Please Select User Type:</SubTitle>
-<<<<<<< HEAD
                   <input 
                   id="sellerChoice" 
                   type="checkbox" 
@@ -261,58 +217,16 @@ function RegisterForm({ registerBuyer, registerSeller }) {
                     /> 
                   Buyer 
                   </label>
-=======
-                  <input
-                    id="sellerChoice"
-                    type="checkbox"
-                    name="usertype"
-                    value="seller"
-                  />
-                  Seller
-                </label>
-                <label>
-                  <input
-                    id="buyerChoice"
-                    type="checkbox"
-                    name="usertype"
-                    value="buyer"
-                  />
-                  Buyer
-                </label>
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
               </Checkboxes>
               <Button type="submit" value="Submit"></Button>
             </RegisterInput>
-<<<<<<< HEAD
             </RegisterFieldSet>
-=======
-          </RegisterFieldSet>
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
         </form>
       </FormContainer>
     </div>
   );
-<<<<<<< HEAD
+
 };
-
-const mapStateToProps = state => {
-  return {
-      first_name: state.first_name, 
-      last_name: state.last_name, 
-      username: state.username, 
-      email: state.email, 
-      password: state.password
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  { registerBuyer, registerSeller }
-)(RegisterForm);
-
-=======
-}
-
 // const mapStateToProps = state => {
 //   return {
 //     data: state.data,
@@ -327,4 +241,3 @@ export default connect(
 // )(RegisterForm);
 
 export default RegisterForm;
->>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
