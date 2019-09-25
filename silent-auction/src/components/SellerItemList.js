@@ -23,7 +23,10 @@ const [edit, setEdit] = useState(false)
     console.log(id);
     axios
       .get(`https://bw-silent-auction.herokuapp.com/api/sellers/${id}/auctions`)
-      .then(res => setSellerItemList(res.data))
+      .then(res => {
+        console.log(res);
+        setSellerItemList(res.data)
+      })
       .catch(err => console.log(err));
   }, []);
 
@@ -37,8 +40,10 @@ const [edit, setEdit] = useState(false)
 
   console.log(Object.keys(editItem).length === 0);
 
-  const deleteHandler = () => {
+  const deleteHandler = (id) => {
     console.log(`delete`);
+    // props.match.params.id = id;
+    props.history.push("/confirm-delete/")
   };
 
   return (
@@ -55,7 +60,7 @@ const [edit, setEdit] = useState(false)
               description={item.description}
               startingPrice={item.starting_price}
               edit={() => editHandler(item.id)}
-              delete={deleteHandler}
+              delete={() => deleteHandler(item.id)}
             />
           ))
         : null}
@@ -69,7 +74,7 @@ const [edit, setEdit] = useState(false)
       Etitle={editItem.title}
       Eimage={editItem.image}
       Eid={editItem.id}
-      edit={edit} /> : <SellerUploadForm {...props} />}
+      edit={edit} /> : <SellerUploadForm {...props} edit={edit}/>}
     </section>
     </>
   );

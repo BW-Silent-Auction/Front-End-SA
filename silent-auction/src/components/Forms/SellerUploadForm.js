@@ -61,7 +61,8 @@ const SellerForm = props => {
     title: '',
     description: '',
     image: null,
-    starting_price: ''
+    starting_price: '',
+    duration: 5
     });
 
   const handleChange = e => {
@@ -83,6 +84,7 @@ const SellerForm = props => {
             image: props.Eimage
         })
         delete item.seller_id;
+        delete item.duration;
         console.log(item);
         console.log(props.Eid)
       }
@@ -91,14 +93,16 @@ const SellerForm = props => {
   const handleSubmit = e => {
     console.log(item);
     e.preventDefault();
-
+    console.log(props.edit)
     if (props.edit === false) {
+        console.log(item)
     const fd = new FormData();
     fd.append("seller_id", item.seller_id)
     fd.append("title", item.title)
     fd.append("description", item.description)
     fd.append("image", item.image, item.image.name)
     fd.append("starting_price", item.starting_price)
+    fd.append("duration", item.duration)
     axios
     .post(`https://bw-silent-auction.herokuapp.com/api/products`, fd)
     .then(res => {
@@ -115,7 +119,7 @@ const SellerForm = props => {
     .then(res => {
         console.log(res);
         console.log("item edited!!")
-        props.history.push('/seller-item-list')
+        props.history.push('/edit-success')
     })
     .catch(err => console.log(err))
   }};
