@@ -18,7 +18,7 @@ export default function Navigation() {
         <div>
         <Router>
           <div>
-            <nav>
+            <Nav>
               <ul>
               {/* <li>
                   <NavLink to="/products/:id/bid">BidForm</NavLink>
@@ -45,7 +45,7 @@ export default function Navigation() {
                   <NavLink to="/seller-item-list/">Seller List</NavLink>
                 </li>
               </ul>
-            </nav>
+            </Nav>
             <Switch>
                 <Route exact path="/register" component={RegisterForm} />
                 <Route path="/buyer-login" component={SignInForm} />
