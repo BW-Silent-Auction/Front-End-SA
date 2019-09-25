@@ -23,7 +23,7 @@ const Timer = props => {
         document.getElementsByClassName("timer").innerHTML = "EXPIRED";
       }
     }, 1000),
-    [now]
+    []
   );
 
   return <div className="timer"></div>;

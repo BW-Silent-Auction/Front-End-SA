@@ -2,52 +2,61 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios';
 
-import {FaUser} from 'react-icons/fa';
-import {FaEnvelope} from 'react-icons/fa';
-import {FaKey} from 'react-icons/fa';
-import {FaFont} from 'react-icons/fa';
-import {FaBold} from 'react-icons/fa';
-
+import { FaUser } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
+import { FaFont } from "react-icons/fa";
+import { FaBold } from "react-icons/fa";
 
 import { connect } from "react-redux";
 import { registerBuyer, registerSeller } from "../../actions";
 
 const FormContainer = styled.div`
-    width: 460px;
-    margin: auto 100px;
-    padding: 5%;
-    border: 1px solid black;
-    background-color: white;
-    box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
-    font-size: .8rem;
-    margin-top: 5%;
-    border-radius: 10px;
-    text-align: center;
+  width: 460px;
+  margin: auto 100px;
+  padding: 5%;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
+  font-size: 0.8rem;
+  margin-top: 5%;
+  border-radius: 10px;
+  text-align: center;
 `;
 const RegisterFieldSet = styled.fieldset`
-    border: none;
+  border: none;
 `;
 const RegisterTitle = styled.legend`
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 `;
 const RegisterInput = styled.div`
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
- const Input = styled.input`
-    margin-top: 1%;
-    width: 350px;
-    padding: 2% 0;
- `;
- const SubTitle = styled.h2`
-    font-size: .9rem;
- `;
- const Checkboxes = styled.div`
- display: flex;
- flex-direction: column;
+const Input = styled.input`
+  margin-top: 1%;
+  width: 350px;
+  padding: 2% 0;
 `;
+const SubTitle = styled.h2`
+  font-size: 0.9rem;
+`;
+const Checkboxes = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const Button = styled.button`
+  width: 350px;
+  padding: 2% 0;
+  margin-top: 2%;
+  border-radius: 3px;
+  background-color: #66b3ff;
+  color: black;
+  font-weight: bold;
+`;
+<<<<<<< HEAD
  const Button = styled.input`
     width: 350px;
     padding: 2% 0;
@@ -82,11 +91,23 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
     }
     console.log(check.seller, check.buyer);
   }
+=======
+
+function RegisterForm({ registerBuyer, registerSeller }) {
+  const [register, setRegister] = useState({
+    firstname: "",
+    lastname: "",
+    username: "",
+    email: "",
+    password: ""
+  });
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });
     // console.log(register);
   };
+<<<<<<< HEAD
     
   useEffect(() => console.log("submit with useEffect"));
 
@@ -113,16 +134,36 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       .catch(err => console.log(err));
   }};
 
+=======
+
+  useEffect(() => {
+    console.log(`give me sth`);
+  });
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    // if (usertype === "seller") {
+    console.log("seller activated");
+    // registerSeller()
+    // } else {
+    //   console.log("buyer activated")
+    //   // registerBuyer()
+    // }
+  };
+
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
   return (
     <div>
       <FormContainer>
         <form onSubmit={handleSubmit}>
           <RegisterFieldSet>
-          <RegisterTitle htmlFor="title">Register for an Account</RegisterTitle>
+            <RegisterTitle htmlFor="title">
+              Register for an Account
+            </RegisterTitle>
             <RegisterInput>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaFont/>
+                  <FaFont />
                   <Input
                     id="firstname"
                     type="text"
@@ -133,9 +174,9 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaBold/>
+                  <FaBold />
                   <Input
                     id="lastname"
                     type="text"
@@ -146,52 +187,57 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaUser/>
+                  <FaUser />
                   <Input
                     id="username"
                     type="text"
                     name="username"
-                    placeholder='Username'
+                    placeholder="Username"
                     required
                     value={register.username}
                     onChange={e => handleChange(e)}
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaEnvelope/>
-                  <Input 
-                  id="email" 
-                  type="email" 
-                  name="email" 
-                  required 
-                  placeholder="user@example.com"
-                  value={register.email}
-                  onChange={e => handleChange(e)} 
+                  <FaEnvelope />
+                  <Input
+                    id="email"
+                    type="email"
+                    name="email"
+                    required
+                    placeholder="user@example.com"
+                    value={register.email}
+                    onChange={e => handleChange(e)}
                   />
                 </label>
               </div>
-              <div className='input-container'>
+              <div className="input-container">
                 <label>
-                  <FaKey/>
+                  <FaKey />
                   <Input
                     id="pass"
                     type="password"
                     name="password"
                     placeholder="password"
+<<<<<<< HEAD
                     // minlength='8' 
+=======
+                    minlength="8"
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
                     required
                     value={register.password}
                     onChange={e => handleChange(e)}
                   />
                 </label>
               </div>
-              <Checkboxes className='checkbox-container'>
-                  <label> 
+              <Checkboxes className="checkbox-container">
+                <label>
                   <SubTitle>Please Select User Type:</SubTitle>
+<<<<<<< HEAD
                   <input 
                   id="sellerChoice" 
                   type="checkbox" 
@@ -215,14 +261,38 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                     /> 
                   Buyer 
                   </label>
+=======
+                  <input
+                    id="sellerChoice"
+                    type="checkbox"
+                    name="usertype"
+                    value="seller"
+                  />
+                  Seller
+                </label>
+                <label>
+                  <input
+                    id="buyerChoice"
+                    type="checkbox"
+                    name="usertype"
+                    value="buyer"
+                  />
+                  Buyer
+                </label>
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
               </Checkboxes>
               <Button type="submit" value="Submit"></Button>
             </RegisterInput>
+<<<<<<< HEAD
             </RegisterFieldSet>
+=======
+          </RegisterFieldSet>
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f
         </form>
       </FormContainer>
     </div>
   );
+<<<<<<< HEAD
 };
 
 const mapStateToProps = state => {
@@ -240,3 +310,21 @@ export default connect(
   { registerBuyer, registerSeller }
 )(RegisterForm);
 
+=======
+}
+
+// const mapStateToProps = state => {
+//   return {
+//     data: state.data,
+//     isFetching: state.isFetching,
+//     error: state.error
+//   };
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   { registerBuyer, registerSeller }
+// )(RegisterForm);
+
+export default RegisterForm;
+>>>>>>> 793ebc34ac9cc4670348268085cf4e5123becc4f

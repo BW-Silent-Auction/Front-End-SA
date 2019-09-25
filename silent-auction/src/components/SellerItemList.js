@@ -1,32 +1,42 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ItemCard from "./ItemCard";
+import SellerItemCard from "./SellerItemCard";
 
 const SellerItemList = props => {
   const [sellerItemList, setSellerItemList] = useState([]);
 
-  const sellerItemDetailHandler = id => {
-    props.history.push(`selled/id/products/${id}`);
-  };
-
   useEffect(() => {
     axios
-      .get(`https://api.silentauction.com/seller/id/products`)
+      .get(`https://bw-silent-auction.herokuapp.com/api/sellers/1/auctions`)
+
       .then(res => setSellerItemList(res.data))
       .catch(err => console.log(err));
   }, []);
 
+  const editHandler = () => {
+    console.log(`edit`);
+  };
+
+  const deleteHandler = () => {
+    console.log(`delete`);
+  };
+
   return (
     <section>
+      <p>Seller item list page</p>
       {sellerItemList
-        /*? itemList*/.map(item => (
-            <ItemCard
+        ? sellerItemList.map((item, idx) => (
+            <SellerItemCard
+              key={idx}
               image={item.image}
               title={item.title}
-              onDetailClicked={() => sellerItemDetailHandler(item.id)}
+              description={item.description}
+              startingPrice={item.starting_price}
+              edit={editHandler}
+              delete={deleteHandler}
             />
           ))
-        /*: null*/}
+        : null}
     </section>
   );
 };
