@@ -9,6 +9,8 @@ import SellerItemList from "./SellerItemList";
 import PrivateRoute from './PrivateRoute';
 import AuctionItemDetail from './AuctionItemDetail';
 import BidderForm from './Forms/BidderForm.js';
+import ItemEditSuccess from "./ItemEditSuccess";
+import ConfirmDelete from "./ConfirmDelete";
 import styled from  'styled-components';
 
 const Nav = styled.nav`
@@ -20,7 +22,6 @@ const Nav = styled.nav`
   // padding: 10px;
   // width: 100%;
 `;
-
 
 export default function Navigation() {
 
@@ -66,6 +67,8 @@ export default function Navigation() {
                 <Route path="/seller-item-list/" component={SellerItemList} />
                 <Route exact path="/products/:id" component={AuctionItemDetail} />
                 <Route exact path="/products/:id/bid" component={BidderForm} />
+                <Route exact path="/edit-success" component={ItemEditSuccess} />
+                <Route exact path="/confirm-delete" component={ConfirmDelete} />
             </Switch>
            
           </div>
