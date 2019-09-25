@@ -11,6 +11,12 @@ import AuctionItemDetail from './AuctionItemDetail';
 import BidderForm from './Forms/BidderForm.js';
 import ItemEditSuccess from "./ItemEditSuccess";
 import ConfirmDelete from "./ConfirmDelete";
+import styled from "styled-components";
+
+const Nav = styled.nav`
+  border-bottom: 1px solid #66b3ff;
+  padding-bottom: 3%;
+`;
 
 export default function Navigation() {
 
