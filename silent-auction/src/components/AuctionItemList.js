@@ -12,7 +12,11 @@ const ListHeader = styled.div`
   border-top: 1px solid #66b3ff;
   border-bottom: 1px solid #66b3ff;
   margin: 3% 2%;
-  background-color: #eff4ff;
+  background-color: white;
+  // position: fixed;
+  // width: 100%;
+  // top: 62px;
+  // left: 0px;
 `;
 const HeaderTitle = styled.h1`
   margin-top: 4%;
@@ -23,11 +27,11 @@ border-top: 1px solid #66b3ff;
 border-right: 1px solid #66b3ff;
 border-left: 1px solid #66b3ff;
 padding: 2% 0 1% 0;
-margin-left: 30%;
+margin: 10px auto 0 auto;
+background-color: #eff4ff;
 `;
 const SearchInput = styled.input`
-    margin-bottom: 2%;
-    margin-left: 3%;
+    margin: 10px auto 15px auto;
     width: 150px;
     padding: 3%;
     border: 1px solid #66b3ff;
@@ -35,9 +39,10 @@ const SearchInput = styled.input`
 `;
 const Items = styled.div`
   display: grid;
-  grid-gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  margin: 20px 1rem;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  margin: 5%;
+  
 `;
 
 

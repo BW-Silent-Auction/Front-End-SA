@@ -11,6 +11,17 @@ import AuctionItemDetail from './AuctionItemDetail';
 import BidderForm from './Forms/BidderForm.js';
 import ItemEditSuccess from "./ItemEditSuccess";
 import ConfirmDelete from "./ConfirmDelete";
+import styled from  'styled-components';
+
+const Nav = styled.nav`
+  border-bottom: 1px solid #66b3ff;
+  padding-bottom: 3%;
+  // position: fixed;
+  // top: 0px;
+  // left: 0px;
+  // padding: 10px;
+  // width: 100%;
+`;
 
 export default function Navigation() {
 
@@ -18,6 +29,7 @@ export default function Navigation() {
         <div>
         <Router>
           <div>
+            
             <Nav>
               <ul>
               {/* <li>
@@ -45,7 +57,7 @@ export default function Navigation() {
                   <NavLink to="/seller-item-list/">Seller List</NavLink>
                 </li>
               </ul>
-            </Nav>
+              </Nav>
             <Switch>
                 <Route exact path="/register" component={RegisterForm} />
                 <Route path="/buyer-login" component={SignInForm} />
@@ -58,6 +70,7 @@ export default function Navigation() {
                 <Route exact path="/edit-success" component={ItemEditSuccess} />
                 <Route exact path="/confirm-delete" component={ConfirmDelete} />
             </Switch>
+           
           </div>
         </Router>
         </div>
