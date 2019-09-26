@@ -15,11 +15,34 @@ import styled from  'styled-components';
 import UploadItemSuccess from "./SellerUploadSuccess";
 import LogoutSuccess from './LogoutSuccess';
 import HomePage from './HomePage';
+import image from "../images/SilentLogo.png"
+import { FaFileExcel } from "react-icons/fa";
 
 const Nav = styled.nav`
   border-bottom: 1px solid #66b3ff;
-  padding-bottom: 3%;
+  margin-top: 2%;
+
 `;
+const NavContainer = styled.div`
+display: flex;
+justify-content: space-between;
+margin-bottom: 2%;
+`;
+const UlNav = styled.ul`
+width: 50%;
+display: flex;
+justify-content: space-between;
+margin-right: 5%;
+`;
+  
+const LiNav= styled.li`
+list-style: none;
+`;
+const Logo = styled.img`
+  width: 40%;
+  
+`;
+
 
 export default function Navigation() {
 
@@ -29,36 +52,38 @@ export default function Navigation() {
           <div>
             
             <Nav>
-              <img src='img/SilentLogo.png' alt='silent auctions app logo'/>
-              <ul>
+      <NavContainer>
+            <a className='logo' href='https://build-week-silent-auction.netlify.com/index.html'>
+              <Logo src={image} alt='silent auctions app logo'/>
+              </a>
+              <UlNav>
+              
               {/* <li>
                   <NavLink to="/products/:id/bid">BidForm</NavLink>
                 </li> */}
               {/* <li>
                   <NavLink to="/products/:id/">AuctionDetail</NavLink>
                 </li> */}
-                <li>
-                  <a href='https://build-week-silent-auction.netlify.com/index.html'>Home</a>
-                </li>
-                <li>
+                <LiNav>
                   <NavLink activeClassName="active" to="/register/">Register</NavLink>
-                </li>
-                <li>
+                </LiNav>
+                <LiNav>
                   <NavLink to="/buyer-login/">Buyer Login</NavLink>
-                </li>
-                <li>
+                </LiNav>
+                <LiNav>
                   <NavLink to="/seller-login/">Seller Login</NavLink>
-                </li>
+                </LiNav>
                 {/* <li>
                   <NavLink to="/profile/">Profile</NavLink>
                 </li> */}
                 {/* <li>
                   <NavLink to="/auction-item-list/">Buyer List</NavLink>
                 </li> */}
-                <li>
+                <LiNav>
                   <NavLink to="/logout-success/">Logout</NavLink>
-                </li> 
-              </ul>
+                </LiNav> 
+              </UlNav>
+              </NavContainer>
               </Nav>
             <Switch>
                 <Route exact path="/logout-success/" component={LogoutSuccess} />
