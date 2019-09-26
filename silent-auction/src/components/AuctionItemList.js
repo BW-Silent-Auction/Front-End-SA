@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 import ItemCard from "./ItemCard";
@@ -60,8 +60,8 @@ const AuctionItemList = props => {
   };
 
   useEffect(() => {
-    axios
-      .get(`https://bw-silent-auction.herokuapp.com/api/products`)
+    axiosWithAuth()
+      .get(`/api/products`)
       .then(res => {
         console.log(res.data)
         const fullItemList = res.data;

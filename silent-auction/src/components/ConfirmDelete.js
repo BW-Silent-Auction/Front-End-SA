@@ -1,11 +1,11 @@
 import React from "react";
-import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 const ConfirmDelete = (props) => {
     console.log(props)
     const handleDelete = () => {
-        axios
-        .delete(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}`)
+        axiosWithAuth()
+        .delete(`/api/products/${props.match.params.id}`)
         .then(res => {
             console.log(res.data);
             props.history.push("/seller-item-list/")
