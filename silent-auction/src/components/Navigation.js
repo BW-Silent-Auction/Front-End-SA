@@ -27,6 +27,7 @@ export default function Navigation() {
           <div>
             
             <Nav>
+              <img src='img/SilentLogo.png' alt='silent auctions app logo'/>
               <ul>
               {/* <li>
                   <NavLink to="/products/:id/bid">BidForm</NavLink>
@@ -35,7 +36,10 @@ export default function Navigation() {
                   <NavLink to="/products/:id/">AuctionDetail</NavLink>
                 </li> */}
                 <li>
-                  <NavLink to="/register/">Register</NavLink>
+                  <a href='https://build-week-silent-auction.netlify.com/index.html'>Home</a>
+                </li>
+                <li>
+                  <NavLink activeClassName="active" to="/register/">Register</NavLink>
                 </li>
                 <li>
                   <NavLink to="/buyer-login/">Buyer Login</NavLink>
