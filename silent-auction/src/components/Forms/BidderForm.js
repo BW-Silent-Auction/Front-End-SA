@@ -74,8 +74,8 @@ const BidderForm = props => {
       e.preventDefault();
       // console.log(props.match.params.id)
       // axiosWithAuth()
-      axios
-      .post(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`, price)
+      axiosWithAuth()
+      .post(`/api/products/${props.match.params.id}/bids`, price)
       .then(res => {
         console.log(res);
         setPrice({ bid_amount: res.data });

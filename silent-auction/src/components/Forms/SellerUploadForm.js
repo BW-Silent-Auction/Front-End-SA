@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from 'axios';
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axiosWithAuth from '../../utils/axiosWithAuth';
 
 import { FaTag } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
 import { FaPenFancy } from "react-icons/fa";
 import { FaFileImage } from "react-icons/fa";
+import image from '../../images/placeholder_image_logo.png';
 
 
 const SellerFormContainer = styled.div`
@@ -54,7 +55,7 @@ const NewItemButton = styled.button`
 
 
 const SellerForm = props => {
-    console.log(props);
+    // console.log(props);
 
     const id = localStorage.getItem("id")
 
@@ -69,13 +70,15 @@ const SellerForm = props => {
 
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
-     console.log(item);
+    //  console.log(item);
   };
 
   const handlePickChange = e => {
     setItem({ ...item, [e.target.name]: e.target.files[0] });
-     console.log(item);
+    //  console.log(item);
   }
+
+
 
   useEffect(() => {
       if (props.edit === true) {
@@ -88,15 +91,24 @@ const SellerForm = props => {
         })
         delete item.seller_id;
         // delete item.duration;
-        console.log(item);
-        console.log(props.Eid)
+        // console.log(item);
+        // console.log(props.Eid)
       }
   }, [props.edit, props.editItem])
 
+//     useEffect(() => {
+//       if (props.edit === true && !props.image) {
+//         setItem({
+//             image: props.Eimage
+//         })
+//       }
+//     //   console.log(image)
+//   }, []);
+
   const handleSubmit = e => {
-    console.log(item);
+    // console.log(item);
     e.preventDefault();
-    console.log(props.edit)
+    // console.log(props.edit)
     if (props.edit === false) {
         console.log(item)
     const fd = new FormData();
@@ -106,8 +118,8 @@ const SellerForm = props => {
     item.image === '' ? fd.append("image", item.image) : fd.append("image", item.image, item.image.name);
     fd.append("starting_price", item.starting_price)
     fd.append("duration", item.duration)
-    axios
-    .post(`https://bw-silent-auction.herokuapp.com/api/products`, fd)
+    axiosWithAuth()
+    .post(`/api/products`, fd)
     .then(res => {
         console.log(res);
         console.log("new item posted!")
@@ -115,14 +127,14 @@ const SellerForm = props => {
     })
     .catch(err => console.log(err))
   } else if (props.edit === true) {
-    console.log(props.editItem)
+    // console.log(props.editItem)
     // setItem(props.editItem);
-    axios
-    .put(`https://bw-silent-auction.herokuapp.com/api/products/${props.Eid}`, item)
+    axiosWithAuth()
+    .put(`/api/products/${props.Eid}`, item)
     .then(res => {
         console.log(res);
         console.log("item edited!!")
-        console.log(props);
+        // console.log(props);
         props.history.push('/edit-success/')
     })
     .catch(err => console.log(err))

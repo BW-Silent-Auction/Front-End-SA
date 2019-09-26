@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 import Timer from './Timer';
 import styled from "styled-components";
@@ -72,8 +72,8 @@ const AuctionItemDetail = props => {
   useEffect(() => {
     console.log(itemDetail);
     // console.log(props);
-    axios
-      .get(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}`)
+    axiosWithAuth()
+      .get(`/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data)
         setItemDetail(res.data)

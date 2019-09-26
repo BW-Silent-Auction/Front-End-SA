@@ -24,7 +24,27 @@ const HomeButton = styled.button`
     font-size: .9rem;
 `;
 
+// const LandingButton = styled.a`
+//     width: 150px;
+//     padding: 2% 0;
+//     margin-top: 2.5%;
+//     background-color: #66b3ff;
+//     color: black;
+//     border-radius: 3px;
+//     font-weight: bold;
+//     font-size: .9rem;
+// `;
+
 const HomePage = props => {
+
+    const clickHandler = () => {
+        props.history.push('/register/');
+    }
+
+    const landingHandler = () => {
+        window.location.href = 'https://build-week-silent-auction.netlify.com/index.html';
+    }
+
   return (
       <HomeContainer>
         <div className='home-page-header'>
@@ -34,7 +54,8 @@ const HomePage = props => {
         <div>
           <SubHeader>Here you can buy and sell items from anywhere in the world</SubHeader>
           <p>Just register to <strong>Sell</strong> or <strong>Buy</strong></p>
-          <HomeButton>Register Now</HomeButton>
+          <HomeButton onClick={clickHandler}>Register Now</HomeButton>
+          <HomeButton onClick={landingHandler}>Landing Page</HomeButton>
         </div>
       </HomeContainer>
   );

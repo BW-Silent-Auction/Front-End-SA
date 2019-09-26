@@ -38,9 +38,10 @@ margin-right: 5%;
 const LiNav= styled.li`
 list-style: none;
 `;
+
 const Logo = styled.img`
   width: 40%;
-  
+  height: auto;
 `;
 
 
@@ -52,10 +53,10 @@ export default function Navigation() {
           <div>
             
             <Nav>
-      <NavContainer>
-            <a className='logo' href='https://build-week-silent-auction.netlify.com/index.html'>
-              <Logo src={image} alt='silent auctions app logo'/>
-              </a>
+            <NavContainer>
+            <NavLink id="emoji" to='/'>
+              <Logo  src={image} alt='silent auctions app logo'/>
+            </NavLink>
               <UlNav>
               
               {/* <li>

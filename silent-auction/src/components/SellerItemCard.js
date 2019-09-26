@@ -51,12 +51,13 @@ const SellerPriceAndTime = styled.div`
 const SellerItemCard = props => {
   return (
     <>
-    {console.log(props)}
+    {/* {console.log(props)} */}
     <Route path={`/product/${props.id}/delete`} render={() => <ConfirmDelete id={props.id} />}></Route>
     <SellerItemCards>
       <SellerSplitInfo>
       <SellerMainDetails>
         <SellerItemImg src={props.image} alt="Card image" />
+        {console.log(props.image)}
         <div>
           <h4>{props.title}</h4>
           <p>{props.description}</p>
@@ -76,7 +77,7 @@ const SellerItemCard = props => {
       </div>
       <div>
         Time remaining to bid:
-        {console.log(props.duration)}
+        {/* {console.log(props.duration)} */}
         <Countdown date={Date.now() + (props.duration * 24 * 3600000)} />
       </div>
       </SellerPriceAndTime>
