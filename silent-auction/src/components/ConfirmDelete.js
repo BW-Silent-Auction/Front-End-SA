@@ -5,9 +5,10 @@ const ConfirmDelete = (props) => {
     console.log(props)
     const handleDelete = () => {
         axios
-        .delete(`https://bw-silent-auction.herokuapp.com/api/products/${props.id}`)
+        .delete(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}`)
         .then(res => {
             console.log(res.data);
+            props.history.push("/seller-item-list/")
         })
         .catch(err => console.log(err))
     }

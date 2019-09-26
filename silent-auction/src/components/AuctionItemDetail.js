@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+import Timer from './Timer';
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 
@@ -47,22 +48,40 @@ const PriceAndTime = styled.div`
 
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
+  // const [bids, setBids] = useState({});
 
   const clickedHandler = () => {
     props.history.push(`/products/:id/bid`);
     console.log("clicked")
   };
 
+  const handleGoBack = () => {
+    props.history.push(`/auction-item-list/`);
+  }
+  console.log(props);
   useEffect(() => {
-    console.log(props);
+    console.log(itemDetail);
+    // console.log(props);
     axios
-      .get(`https://bw-silent-auction.herokuapp.com/api/products/:id`)
+      .get(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data)
         setItemDetail(res.data)
       })
       .catch(err => console.log(err));
   }, [props.match.params.id]);
+
+  // useEffect(() => {
+  //   console.log(props);
+  //   axios
+  //     .get(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`)
+  //     .then(res => {
+  //       console.log(res.data)
+  //       // setBids(res.data)
+  //     })
+  //     .catch(err => console.log(err));
+  // }, [props.match.params.id]);
+
 
   return (
     <div>
@@ -74,18 +93,19 @@ const AuctionItemDetail = props => {
           <h4>Item Title: {itemDetail.title}</h4>
           <p><strong>Description: </strong>{itemDetail.description}</p>
           <PlaceBidButton onClick={clickedHandler}>Place a bid</PlaceBidButton>
+          <button onClick={handleGoBack}>Go Back</button>
         </div>
       </MainDetails>
       <PriceAndTime>
         <h3>Starting Price: </h3>
         <p>${itemDetail.starting_price}</p>
         <ul>
-          {/* {itemDetail ? itemDetail.bid.map(bid => (
+          {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
               <span>Bidder: {bid.buyer}</span>
             </li>
-          )) : null} */}
+          )) : <p>No bids</p>}
         </ul>
         <h3>Time Remaining to Bid:</h3>
         <p><FaClock/></p>

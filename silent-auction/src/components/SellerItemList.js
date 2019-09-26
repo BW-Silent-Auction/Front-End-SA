@@ -61,6 +61,7 @@ const [edit, setEdit] = useState(false)
               startingPrice={item.starting_price}
               edit={() => editHandler(item.id)}
               delete={() => deleteHandler(item.id)}
+              id={item.id}
             />
           ))
         : null}

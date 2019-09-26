@@ -109,7 +109,7 @@ const SellerForm = props => {
     .then(res => {
         console.log(res);
         console.log("new item posted!")
-        props.history.push('/seller-item-list')
+        props.history.push('/upload-success/');
     })
     .catch(err => console.log(err))
   } else if (props.edit === true) {
@@ -129,7 +129,7 @@ const SellerForm = props => {
     <SellerFormContainer>
       <form onSubmit={handleSubmit}                         encType="multipart/form-data">
         <UploadFieldSet>
-            <UploadTitle>Add New Item</UploadTitle>
+            <UploadTitle>Add/Edit New Item</UploadTitle>
                 <div className="input-file">
                     <label>
                         <FaFileImage />
@@ -185,7 +185,7 @@ const SellerForm = props => {
                         />
                     </label>
                 </div>
-                <NewItemButton type="submit">Upload New Item</NewItemButton>
+                <NewItemButton type="submit">Submit</NewItemButton>
             </UploadFieldSet>
       </form>
     </SellerFormContainer>
