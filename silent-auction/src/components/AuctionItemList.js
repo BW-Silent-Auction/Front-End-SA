@@ -9,9 +9,9 @@ import { FaSearch } from "react-icons/fa";
 
 const ListHeader = styled.div`
   text-align: center;
-  border-top: 1px solid #66b3ff;
+  // border-top: 1px solid #66b3ff;
   border-bottom: 1px solid #66b3ff;
-  margin: 3% 2%;
+  margin: 5% 2%;
   background-color: white;
   // position: fixed;
   // width: 100%;
