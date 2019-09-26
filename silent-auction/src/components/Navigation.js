@@ -13,6 +13,7 @@ import ItemEditSuccess from "./ItemEditSuccess";
 import ConfirmDelete from "./ConfirmDelete";
 import styled from  'styled-components';
 import UploadItemSuccess from "./SellerUploadSuccess";
+import LogoutSuccess from './LogoutSuccess';
 
 const Nav = styled.nav`
   border-bottom: 1px solid #66b3ff;
@@ -49,12 +50,13 @@ export default function Navigation() {
                 {/* <li>
                   <NavLink to="/auction-item-list/">Buyer List</NavLink>
                 </li> */}
-                {/* <li>
-                  <NavLink to="/seller-item-list/">Seller List</NavLink>
-                </li> */}
+                <li>
+                  <NavLink to="/logout-success/">Logout</NavLink>
+                </li> 
               </ul>
               </Nav>
             <Switch>
+                <Route exact path="/logout-success/" component={LogoutSuccess} />
                 <Route exact path="/register" component={RegisterForm} />
                 <Route path="/buyer-login" component={SignInForm} />
                 <Route path="/seller-login" component={SellSignInForm} />

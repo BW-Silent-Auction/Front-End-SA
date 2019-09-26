@@ -63,7 +63,7 @@ const SellerForm = props => {
     description: '',
     image: null,
     starting_price: '',
-    duration: 5
+    duration: ''
     });
 
   const handleChange = e => {
@@ -168,6 +168,20 @@ const SellerForm = props => {
                         placeholder="Enter Starting Price"
                         required
                         value={item.starting_price}
+                        onChange={e => handleChange(e)}
+                    />
+                    </label>
+                    <label>
+                    <Inputs
+                        id="duration"
+                        type="number"
+                        name="duration"
+                        // min="0.00"
+                        // max="10000.00"
+                        step="any"
+                        placeholder="Enter Bidding Duration (days)"
+                        required
+                        value={item.duration}
                         onChange={e => handleChange(e)}
                     />
                     </label>

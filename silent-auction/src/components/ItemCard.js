@@ -32,9 +32,11 @@ const DetailsButton = styled.button`
 const ItemCard = props => {
   return (
     <ItemCards>
+      {/* {console.log(props)} */}
       <CardImg className="card-image" src={props.image} alt="Card" />
       <div>
         <h4 className="card-title">{props.title}</h4>
+        <h4 className="card-title">Starting Price: ${props.starting_price}</h4>
         <DetailsButton onClick={props.onDetailClicked}>Details</DetailsButton>
       </div>
     </ItemCards>

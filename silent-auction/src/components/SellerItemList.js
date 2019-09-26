@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 import SellerItemCard from "./SellerItemCard";
 import SellerUploadForm from './Forms/SellerUploadForm'
@@ -21,8 +21,8 @@ const [edit, setEdit] = useState(false)
 
   useEffect(() => {
     console.log(id);
-    axios
-      .get(`https://bw-silent-auction.herokuapp.com/api/sellers/${id}/auctions`)
+    axiosWithAuth()
+      .get(`/api/sellers/${id}/auctions`)
       .then(res => {
         console.log(res);
         setSellerItemList(res.data)
@@ -59,6 +59,7 @@ const [edit, setEdit] = useState(false)
               title={item.title}
               description={item.description}
               startingPrice={item.starting_price}
+              duration={item.duration}
               edit={() => editHandler(item.id)}
               delete={() => deleteHandler(item.id)}
               id={item.id}

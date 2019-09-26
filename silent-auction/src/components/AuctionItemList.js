@@ -89,11 +89,13 @@ const AuctionItemList = props => {
         </SeachContainer>
      </ListHeader>
       <Items>
+        {console.log(itemList)}
       {itemList
         ? itemList.map(item => (
             <ItemCard
               image={item.image}
               title={item.title}
+              starting_price={item.starting_price}
               onDetailClicked={() => auctionItemDetailHandler(item.id)}
             />
           ))

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 import ConfirmDelete from "./ConfirmDelete";
+import Countdown from 'react-countdown-now';
 
 const SellerItemCards = styled.div`
 background: #eff4ff;
@@ -75,7 +76,8 @@ const SellerItemCard = props => {
       </div>
       <div>
         Time remaining to bid:
-        {/* <Timer bidDeadline={props.bidDeadline} /> */}
+        {console.log(props.duration)}
+        <Countdown date={Date.now() + (props.duration * 24 * 3600000)} />
       </div>
       </SellerPriceAndTime>
       </SellerSplitInfo>
