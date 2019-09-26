@@ -4,6 +4,7 @@ import axios from "axios";
 import Timer from './Timer';
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
+import Countdown from 'react-countdown-now';
 
 const ItemDetails = styled.div`
 background: #eff4ff;
@@ -51,7 +52,7 @@ const AuctionItemDetail = props => {
   // const [bids, setBids] = useState({});
 
   const clickedHandler = () => {
-    props.history.push(`/products/:id/bid`);
+    props.history.push(`/products/${props.match.params.id}/bid`);
     console.log("clicked")
   };
 
@@ -108,7 +109,8 @@ const AuctionItemDetail = props => {
           )) : <p>No bids</p>}
         </ul>
         <h3>Time Remaining to Bid:</h3>
-        <p><FaClock/></p>
+        <Countdown date={Date.now() + (itemDetail.duration * 24 * 3600000)} />
+        <span> </span><FaClock/>
         {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
       </PriceAndTime>
       {/* <div>

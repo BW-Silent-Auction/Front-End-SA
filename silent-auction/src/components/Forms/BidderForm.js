@@ -65,17 +65,21 @@ const BidderForm = props => {
     const handleChange = e => {
         setPrice({ ...price, [e.target.name]: e.target.value });
       };
+
+    const handleCancel = e => {
+      props.history.push(`/products/${props.match.params.id}`)
+    }
     
     const handleSubmit = e => {
       e.preventDefault();
-      console.log(price)
+      // console.log(props.match.params.id)
       // axiosWithAuth()
       axios
       .post(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`, price)
       .then(res => {
         console.log(res);
         setPrice({ bid_amount: res.data });
-        props.history.push('/products/:id')
+        props.history.push(`/products/${props.match.params.id}`)
       })
       .catch(err => console.log(err));
     };
@@ -102,7 +106,7 @@ const BidderForm = props => {
             />
           </label>
           <hr />
-          <CancelButton type="reset" value="reset" onChange={e => handleChange(e)}>
+          <CancelButton onClick={e => handleCancel(e)}>
             Cancel
           </CancelButton>
           <ConfirmButton type="submit" value="submit" onChange={e => handleChange(e)}>

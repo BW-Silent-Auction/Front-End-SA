@@ -10,7 +10,7 @@ const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://bw-silent-auction.herokuapp.com',
     headers: {
-      Authorization: token
+      authorization: token
     }
   });
 };
