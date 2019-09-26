@@ -12,6 +12,7 @@ import BidderForm from './Forms/BidderForm.js';
 import ItemEditSuccess from "./ItemEditSuccess";
 import ConfirmDelete from "./ConfirmDelete";
 import styled from  'styled-components';
+import UploadItemSuccess from "./SellerUploadSuccess";
 
 const Nav = styled.nav`
   border-bottom: 1px solid #66b3ff;
@@ -30,9 +31,9 @@ export default function Navigation() {
               {/* <li>
                   <NavLink to="/products/:id/bid">BidForm</NavLink>
                 </li> */}
-              <li>
+              {/* <li>
                   <NavLink to="/products/:id/">AuctionDetail</NavLink>
-                </li>
+                </li> */}
                 <li>
                   <NavLink to="/register/">Register</NavLink>
                 </li>
@@ -42,15 +43,15 @@ export default function Navigation() {
                 <li>
                   <NavLink to="/seller-login/">Seller Login</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <NavLink to="/profile/">Profile</NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <NavLink to="/auction-item-list/">Buyer List</NavLink>
-                </li>
-                <li>
+                </li> */}
+                {/* <li>
                   <NavLink to="/seller-item-list/">Seller List</NavLink>
-                </li>
+                </li> */}
               </ul>
               </Nav>
             <Switch>
@@ -60,10 +61,11 @@ export default function Navigation() {
                 <Route exact path="/profile/" component={Profile} /> 
                 <Route path="/auction-item-list/" component={AuctionItemList} />
                 <Route path="/seller-item-list/" component={SellerItemList} />
+                <Route exact path="/products/:id/delete" component={ConfirmDelete} />
                 <Route exact path="/products/:id" component={AuctionItemDetail} />
                 <Route exact path="/products/:id/bid" component={BidderForm} />
                 <Route exact path="/edit-success" component={ItemEditSuccess} />
-                <Route exact path="/confirm-delete" component={ConfirmDelete} />
+                <Route exact path="/upload-success" component={UploadItemSuccess} />
             </Switch>
            
           </div>

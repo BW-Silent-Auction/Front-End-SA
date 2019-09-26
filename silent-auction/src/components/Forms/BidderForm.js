@@ -58,7 +58,7 @@ const ConfirmButton = styled.button`
 
 const BidderForm = props => {
     const [price, setPrice] = useState({
-      buyer_id: 1,
+      buyer_id: localStorage.getItem("buyer-id"),
       bid_amount: ''
     });
 
@@ -66,19 +66,19 @@ const BidderForm = props => {
         setPrice({ ...price, [e.target.name]: e.target.value });
       };
     
-      const handleSubmit = e => {
-        e.preventDefault();
-        console.log(price)
-        // axiosWithAuth()
-        axios
-        .post(`https://bw-silent-auction.herokuapp.com/api/products/1/bids`, price)
-        .then(res => {
-          console.log(res);
-          setPrice({ bid_amount: res.data });
-          props.history.push('/products/:id')
-        })
-        .catch(err => console.log(err));
-      };
+    const handleSubmit = e => {
+      e.preventDefault();
+      console.log(price)
+      // axiosWithAuth()
+      axios
+      .post(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`, price)
+      .then(res => {
+        console.log(res);
+        setPrice({ bid_amount: res.data });
+        props.history.push('/products/:id')
+      })
+      .catch(err => console.log(err));
+    };
 
   return (
     <BidderContainer>

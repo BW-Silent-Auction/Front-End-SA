@@ -1,7 +1,10 @@
 import React from "react";
 import Timer from "./Timer";
+import { Route } from "react-router";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
+import ConfirmDelete from "./ConfirmDelete";
 
 const SellerItemCards = styled.div`
 background: #eff4ff;
@@ -46,6 +49,9 @@ const SellerPriceAndTime = styled.div`
 
 const SellerItemCard = props => {
   return (
+    <>
+    {console.log(props)}
+    <Route path={`/product/${props.id}/delete`} render={() => <ConfirmDelete id={props.id} />}></Route>
     <SellerItemCards>
       <SellerSplitInfo>
       <SellerMainDetails>
@@ -75,9 +81,10 @@ const SellerItemCard = props => {
       </SellerSplitInfo>
       <div>
         <SellerButtons onClick={props.edit}>Edit</SellerButtons>
-        <SellerButtons onClick={props.delete}>Delete</SellerButtons>
+        <Link to={`/products/${props.id}/delete`} >Delete</Link>
       </div>
     </SellerItemCards>
+    </>
   );
 };
 
