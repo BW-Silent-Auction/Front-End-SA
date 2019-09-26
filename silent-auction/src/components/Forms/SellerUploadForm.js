@@ -54,6 +54,7 @@ const NewItemButton = styled.button`
 
 
 const SellerForm = props => {
+    console.log(props);
 
     const id = localStorage.getItem("id")
 
@@ -61,7 +62,7 @@ const SellerForm = props => {
     seller_id: id,
     title: '',
     description: '',
-    image: null,
+    image: '',
     starting_price: '',
     duration: ''
     });
@@ -82,10 +83,11 @@ const SellerForm = props => {
             description: props.Edescription,
             starting_price: props.EstartingPrice,
             title: props.Etitle,
-            image: props.Eimage
+            image: props.Eimage,
+            duration: props.Eduration
         })
         delete item.seller_id;
-        delete item.duration;
+        // delete item.duration;
         console.log(item);
         console.log(props.Eid)
       }
@@ -101,7 +103,7 @@ const SellerForm = props => {
     fd.append("seller_id", item.seller_id)
     fd.append("title", item.title)
     fd.append("description", item.description)
-    fd.append("image", item.image, item.image.name)
+    item.image === '' ? fd.append("image", item.image) : fd.append("image", item.image, item.image.name);
     fd.append("starting_price", item.starting_price)
     fd.append("duration", item.duration)
     axios
@@ -120,7 +122,8 @@ const SellerForm = props => {
     .then(res => {
         console.log(res);
         console.log("item edited!!")
-        props.history.push('/edit-success')
+        console.log(props);
+        props.history.push('/edit-success/')
     })
     .catch(err => console.log(err))
   }};

@@ -11,7 +11,7 @@ const ItemEditSuccess = (props) => {
         <>
         <h1>Item successfully edited!</h1>
         <form onSubmit={submitHandle}>
-            <button type="submite">Go Back to List</button>
+            <button type="submit">Go Back to List</button>
         </form>
         </>
     )

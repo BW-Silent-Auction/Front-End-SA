@@ -76,6 +76,7 @@ const [edit, setEdit] = useState(false)
       Etitle={editItem.title}
       Eimage={editItem.image}
       Eid={editItem.id}
+      Eduration={editItem.duration}
       edit={edit} /> : <SellerUploadForm {...props} edit={edit}/>}
     </section>
     </>

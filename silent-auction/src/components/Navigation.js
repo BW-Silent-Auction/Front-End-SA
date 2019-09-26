@@ -14,6 +14,7 @@ import ConfirmDelete from "./ConfirmDelete";
 import styled from  'styled-components';
 import UploadItemSuccess from "./SellerUploadSuccess";
 import LogoutSuccess from './LogoutSuccess';
+import HomePage from './HomePage';
 
 const Nav = styled.nav`
   border-bottom: 1px solid #66b3ff;
@@ -60,14 +61,14 @@ export default function Navigation() {
                 <Route exact path="/register" component={RegisterForm} />
                 <Route path="/buyer-login" component={SignInForm} />
                 <Route path="/seller-login" component={SellSignInForm} />
-                <Route exact path="/profile/" component={Profile} /> 
-                <Route path="/auction-item-list/" component={AuctionItemList} />
-                <Route path="/seller-item-list/" component={SellerItemList} />
-                <Route exact path="/products/:id/delete" component={ConfirmDelete} />
-                <Route exact path="/products/:id" component={AuctionItemDetail} />
-                <Route exact path="/products/:id/bid" component={BidderForm} />
+                <PrivateRoute path="/auction-item-list/" component={AuctionItemList} />
+                <PrivateRoute path="/seller-item-list/" component={SellerItemList} />
+                <PrivateRoute exact path="/products/:id/delete" component={ConfirmDelete} />
+                <PrivateRoute exact path="/products/:id" component={AuctionItemDetail} />
+                <PrivateRoute exact path="/products/:id/bid" component={BidderForm} />
                 <Route exact path="/edit-success" component={ItemEditSuccess} />
                 <Route exact path="/upload-success" component={UploadItemSuccess} />
+                <Route exact path="/" component={HomePage} />
             </Switch>
            
           </div>

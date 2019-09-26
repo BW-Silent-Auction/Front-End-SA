@@ -65,6 +65,10 @@ const BidderForm = props => {
     const handleChange = e => {
         setPrice({ ...price, [e.target.name]: e.target.value });
       };
+
+    const handleCancel = e => {
+      props.history.push(`/products/${props.match.params.id}`)
+    }
     
     const handleSubmit = e => {
       e.preventDefault();
@@ -102,7 +106,7 @@ const BidderForm = props => {
             />
           </label>
           <hr />
-          <CancelButton type="reset" value="reset" onChange={e => handleChange(e)}>
+          <CancelButton onClick={e => handleCancel(e)}>
             Cancel
           </CancelButton>
           <ConfirmButton type="submit" value="submit" onChange={e => handleChange(e)}>
