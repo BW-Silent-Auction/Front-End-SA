@@ -14,9 +14,11 @@ const CardImg = styled.img`
     width: 250px;
     max-height: 400px;
     margin: 5%;
-
 `;
-
+const Strong = styled.strong`
+font-size:1rem;
+color: red;
+`;
 const DetailsButton = styled.button`
     width: 150px;
     padding: 3% 0;
@@ -36,7 +38,7 @@ const ItemCard = props => {
       <CardImg className="card-image" src={props.image} alt="Card" />
       <div>
         <h4 className="card-title">{props.title}</h4>
-        <h4 className="card-title">Starting Price: ${props.starting_price}</h4>
+        <h5 className="card-title">Starting Price: <Strong>${props.starting_price}</Strong></h5>
         <DetailsButton onClick={props.onDetailClicked}>Details</DetailsButton>
       </div>
     </ItemCards>

@@ -34,6 +34,11 @@ const ItemImg = styled.img`
   max-width: 300px;
   height: auto;
 `;
+const Price = styled.p`
+  font-size: 1.2rem;
+  color: red;
+  font-weight: bold;
+`;
 const PlaceBidButton = styled.button`
     width: 200px;
     padding: 4% 0;
@@ -44,7 +49,11 @@ const PlaceBidButton = styled.button`
     font-weight: bold;
 `;
 const PriceAndTime = styled.div`
-  text-align: center;
+  // text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
 `;
 
 const AuctionItemDetail = props => {
@@ -99,7 +108,7 @@ const AuctionItemDetail = props => {
       </MainDetails>
       <PriceAndTime>
         <h3>Starting Price: </h3>
-        <p>${itemDetail.starting_price}</p>
+        <Price>${itemDetail.starting_price}</Price>
         <ul>
           {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.map(bid => (
             <li>
