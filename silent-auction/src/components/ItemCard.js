@@ -35,6 +35,7 @@ const ItemCard = props => {
       <CardImg className="card-image" src={props.image} alt="Card" />
       <div>
         <h4 className="card-title">{props.title}</h4>
+        <p>Starting Price: {props.starting_price}</p>
         <DetailsButton onClick={props.onDetailClicked}>Details</DetailsButton>
       </div>
     </ItemCards>
