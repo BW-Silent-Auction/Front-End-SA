@@ -2,12 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemCards = styled.div`
+  width: 50%;
   background: #eff4ff;
   height: auto;
   border-radius: 4px;
   box-shadow: -14px 12px 14px 0px rgb(52, 28, 9), 0 15px 12px rgba(0, 0, 0, 0.22);
   text-align: center;
   border: .5px dotted #341C09;
+  margin: 0 auto;
+
 `;
 
 const CardImg = styled.img`
@@ -39,6 +42,7 @@ const ItemCard = props => {
       <div>
         <h4 className="card-title">{props.title}</h4>
         <h5 className="card-title">Starting Price: <Strong>${props.starting_price}</Strong></h5>
+        <h5></h5>
         <DetailsButton onClick={props.onDetailClicked}>Details</DetailsButton>
       </div>
     </ItemCards>

@@ -7,7 +7,7 @@ import Countdown from "react-countdown-now";
 import image from "../images/BidLogo.png";
 
 const ItemDetails = styled.div`
-
+width: 90%;
 background: #eff4ff;
 color: black;
 width: 60%;
@@ -22,18 +22,17 @@ margin-top: 10%;
 box-shadow: -11px 8px 10px grey; 
 border-radius: 5px;
 border: 1px dotted #341C09;
-
-
 `;
 const SplitInfo = styled.div`
-height: auto;
+width: 90%;
+  height: auto;
   display: flex;
 `;
 const MainDetails = styled.div`
   width: 50%;
   border-right: 1px solid black;
   padding: 5%;
-  margin-right: 6%;
+  margin: auto 6% auto 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -71,6 +70,7 @@ const GoBackButton = styled.button`
   font-size: .9rem;
 `;
 const PriceAndTime = styled.div`
+margin-left: 4%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -102,7 +102,7 @@ const BidderList = styled.li`
 
   list-style: none;
   &:first-child {
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 1rem;
     border: 1px dotted #66b3ff;
     width: 100%;
@@ -201,10 +201,10 @@ const AuctionItemDetail = props => {
           </MainDetails>
           <PriceAndTime>
             <div>
-
+            
               <StartBid>Starting Price: </StartBid>
               <Price>${itemDetail.starting_price}</Price>
-              <HighestHeader>Highest Bid:</HighestHeader>
+              <HighestHeader>Highest Bid</HighestHeader>
               <ULBids>
                 {itemDetail &&
                 itemDetail.bids &&
