@@ -57,7 +57,22 @@ const PriceAndTime = styled.div`
 
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
-  // const [bids, setBids] = useState({});
+  const [bidderId, setBidderId] = useState([]);
+  const [bidderId2, setBidderId2] = useState([]);
+
+
+  const bidderNameArray = bidderId.filter((element) => {
+      return element.id === bidderId2.find((param) => {
+        return param === element.id
+      })
+  });
+
+  // const bidderName = bidderNameArray.filter((param) => {
+  //   console.log(itemDetail.id)
+  //   return param.id === itemDetail.id;
+  // })
+
+  console.log(bidderNameArray)
   console.log(itemDetail)
 
   const clickedHandler = () => {
@@ -69,32 +84,63 @@ const AuctionItemDetail = props => {
     props.history.push(`/auction-item-list/`);
   }
   console.log(props);
+
   useEffect(() => {
-    console.log(itemDetail);
-    // console.log(props);
+    console.log(props);
+    axiosWithAuth()
+      .get(`/api/buyers/`)
+      .then(res => {
+        console.log(res.data)
+        return res.data
+      })
+      .then(res => {
+        return res.map(element => {
+          return {id: element.id, username: element.username}
+        })
+      })
+      .then(res => {
+        console.log(res)
+        setBidderId(res)
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
     axiosWithAuth()
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data)
         setItemDetail(res.data)
+        return res.data
+      })
+      .then(res => {
+        return res.bids 
+      })
+      .then(res => {
+        console.log(res)
+        return res.map(element => {
+          return element.buyer_id
+        })
+      })
+      .then(res => {
+        console.log(res)
+        setBidderId2(res)
       })
       .catch(err => console.log(err));
   }, [props.match.params.id]);
 
-  // useEffect(() => {
-  //   console.log(props);
-  //   axios
-  //     .get(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`)
-  //     .then(res => {
-  //       console.log(res.data)
-  //       // setBids(res.data)
-  //     })
-  //     .catch(err => console.log(err));
-  // }, [props.match.params.id]);
+  // const bidderName = bidderNameArray.filter((param) => {
+  //   console.log(itemDetail)
+  //   return param.id === itemDetail.bids.filter(element => {
+  //     return element.buyer_id === param.id
+  //   })
+  // })
 
+  // console.log(bidderName)
 
   return (
     <div>
+      {console.log(bidderId, bidderId2)}
     <ItemDetails>
       <SplitInfo className='detail-separation'>
       <MainDetails>
@@ -113,7 +159,7 @@ const AuctionItemDetail = props => {
           {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
-              <span>Bidder ID: {bid.buyer_id}</span>
+              {/* <span>Bidder ID: {itemDetail.id}</span> */}
             </li>
           )) : <p>No bids</p>}
         </ul>
