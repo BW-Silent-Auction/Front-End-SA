@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const ItemCards = styled.div`
-  width: 50%;
+  width: 300px;
   background: #eff4ff;
   height: auto;
   border-radius: 4px;
