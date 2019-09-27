@@ -23,8 +23,10 @@ margin-top: 10%;
 box-shadow: -11px 8px 10px grey; 
 border-radius: 5px;
 border: 1px dotted #341C09;
+
 `;
 const SplitInfo = styled.div`
+height: auto;
   display: flex;
 `;
 const MainDetails = styled.div`
@@ -32,39 +34,46 @@ const MainDetails = styled.div`
   border-right: 1px solid black;
   padding: 5%;
   margin-right: 6%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 `;
 const ItemImg = styled.img`
-  max-width: 300px;
+  max-width: 350px;
   height: auto;
 `;
 const Price = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #4760cd;
   font-weight: bold;
 `;
 const PlaceBidButton = styled.button`
     width: 200px;
     padding: 4% 0;
-    margin: 10px 0 10px 16%;
+    margin: 10px 0 10px 5%;
     background-color: #66b3ff;
     color: black;
     border-radius: 3px;
     font-weight: bold;
-    font-size: .9rem;
+    font-size: 1.1rem;
 `;
 const GoBackButton = styled.button`
   width: 150px;
   background-color: lightgrey;
   padding: 4% 0;
-  margin: 10px 0 10px 23%;
+  margin: 10px 0 10px 5%;
   border-radius: 3px;
   font-weight: bold;
+  font-size: .9rem;
 `;
 const PriceAndTime = styled.div`
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
 `;
 const Timer = styled.h4`
   color: red;
@@ -76,19 +85,30 @@ const TimeRemain = styled.h3`
 const StartBid = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
-  line-height: 1.5;
   `;
   const ULBids = styled.ul`
     padding-left: 0;
+
+  `;
+
+  const HighestHeader = styled.h2`
+  text-align: center;  
+  margin-left: 5%;
   `;
   const BidderList = styled.li`
   list-style: none;
   &:first-child {
     font-size: 2rem;
+    line-height: 1rem;
+    border: 1px dotted #66b3ff;
+    width: 100%;
+    height: auto;
+    padding: 0 6% 15% 6%;
+    text-align: top;
   }
   `;
   const BidLogo = styled.img`
-    height: 200px;
+    height: 250px;
     margin: 3% 0 3% 45%;
   `;
   const BidderPrice = styled.p`
@@ -146,7 +166,7 @@ const AuctionItemDetail = props => {
           <MainDetails>
             <ItemImg src={itemDetail.image} alt="image" />
             <div>
-              <h4>Item Title: {itemDetail.title}</h4>
+              <h4>{itemDetail.title}</h4>
               <p><strong>Description: </strong>{itemDetail.description}</p>
                 <PlaceBidButton onClick={clickedHandler}>Place a Bid</PlaceBidButton>
                 <GoBackButton onClick={handleGoBack}>Back to List</GoBackButton>
@@ -156,9 +176,11 @@ const AuctionItemDetail = props => {
             <div>
             <StartBid>Starting Price: </StartBid>
             <Price>${itemDetail.starting_price}</Price>
+            <HighestHeader>Highest Bid:</HighestHeader>
               <ULBids>
                 {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.sort(( a , b ) => {return parseInt(b.bid_amount) - parseInt(a.bid_amount)}   ).map(bid => (
                   <BidderList>
+                    <br></br>
                     <BidderPrice>Bid Price: <NewPrice>${bid.bid_amount}</NewPrice></BidderPrice>
                     <span>Bidder: {bid.buyer_username}</span>
                   </BidderList>

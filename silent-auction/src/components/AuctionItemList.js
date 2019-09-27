@@ -7,20 +7,20 @@ import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
 
 
+const ItemListSection = styled.section`
+  margin-top: 10%;
+ 
+`;
+
 const ListHeader = styled.div`
   text-align: center;
-  // border-top: 1px solid #66b3ff;
   border-bottom: 1px solid #66b3ff;
-  margin: 5% 2%;
-  background-color: white;
-  // position: fixed;
-  // width: 100%;
-  // top: 62px;
-  // left: 0px;
 `;
+
 const HeaderTitle = styled.h1`
   margin-top: 4%;
 `;
+
 const SeachContainer = styled.div`
 width: 400px;
 border-top: 1px solid #66b3ff;
@@ -30,6 +30,7 @@ padding: 2% 0 1% 0;
 margin: 10px auto 0 auto;
 background-color: #eff4ff;
 `;
+
 const SearchInput = styled.input`
     margin: 10px auto 15px auto;
     width: 150px;
@@ -37,6 +38,7 @@ const SearchInput = styled.input`
     border: 1px solid #66b3ff;
     border-radius: 3px;
 `;
+
 const Items = styled.div`
   display: grid;
   grid-gap: 20px;
@@ -85,7 +87,7 @@ const AuctionItemList = props => {
   // }, [props.match.params.id]);
 
   return (
-    <section>
+    <ItemListSection>
       <ListHeader className='list-header'>
         <HeaderTitle>What Are You Looking For?</HeaderTitle>
         
@@ -114,7 +116,7 @@ const AuctionItemList = props => {
           ))
         : null}
         </Items>
-    </section>
+    </ItemListSection>
   );
 };
 

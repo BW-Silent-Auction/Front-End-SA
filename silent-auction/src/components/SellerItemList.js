@@ -12,14 +12,13 @@ const SellerProfile = styled.h1`
   width: 60%;
   text-align: center;
   font-size: 2rem;
-  margin: 4% 0 0 20%;
+  margin: 15% 0 0 20%;
   box-shadow: 0px 1px 10px 0 grey;
   border: 1px solid white;
   padding: 2% 0;
+  // position: fixed;
 `;
-// const SellerItemCardContainer = styled.section`
-//   width: 60%;
-// `;
+
 
 const SellerItemList = props => {
   // console.log(props)

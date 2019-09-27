@@ -1,5 +1,44 @@
 import React from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import styled from "styled-components";
+
+const DeleteContainer = styled.div`
+    margin: 10% 0 5% 0;
+    text-align: center;
+    
+`;
+
+const DeleteHeader = styled.h1`
+  width: 60%;
+  text-align: center;
+  font-size: 2rem;
+  margin: 4% 0 0 20%;
+  box-shadow: 0px 1px 10px 0 grey;
+  border: 1px solid white;
+  padding: 2% 0;
+`;
+
+const GoBackButton = styled.button`
+width: 200px;
+padding: 1% 0;
+margin-top: 5%;
+margin-left: 5%;
+border-radius: 3px;
+background-color: #eff4ff;
+color: black;
+font-weight: bold;
+font-size: 1rem;
+`;
+const DeleteButton = styled.button`
+width: 200px;
+padding: 1% 0;
+margin-top: 5%;
+border-radius: 3px;
+background-color: #66b3ff;
+color: black;
+font-weight: bold;
+font-size: 1rem;
+`;
 
 const ConfirmDelete = (props) => {
     console.log(props)
@@ -18,14 +57,14 @@ const ConfirmDelete = (props) => {
     }
 
     return(
-        <>
-        <h1>Are you sure you want to delete?</h1>
-            <button 
+        <DeleteContainer>
+        <DeleteHeader>Are you sure you want to delete?</DeleteHeader>
+            <DeleteButton 
             type="submit" 
             onClick={handleDelete}
-            >Delete</button>
-            <button onClick={handleCancel}>Go Back</button>
-        </>
+            >Delete</DeleteButton>
+            <GoBackButton onClick={handleCancel}>Go Back</GoBackButton>
+        </DeleteContainer>
     )
 }
 
