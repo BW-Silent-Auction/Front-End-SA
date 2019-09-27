@@ -63,7 +63,7 @@ const SignInForm = props => {
     .then(res => {      
         console.log(res.data, "seller login call made");
         localStorage.setItem('token', res.data.token);
-        // localStorage.setItem('id', signIn.username);
+        localStorage.setItem('seller-id', res.data.user.id);
         props.history.push('/seller-item-list');
     })
     .catch(err => console.log(err));

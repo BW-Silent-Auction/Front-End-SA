@@ -8,8 +8,7 @@ import { FaSearch } from "react-icons/fa";
 
 
 const ItemListSection = styled.section`
-  margin-top: 10%;
- 
+  margin-top: 15%;
 `;
 
 const ListHeader = styled.div`

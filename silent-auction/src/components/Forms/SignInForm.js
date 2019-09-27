@@ -67,6 +67,7 @@ const SignInForm = props => {
     .then(res => {      
       console.log(res, "buyer login call made");
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('buyer-id', res.data.user.id)
       props.history.push('/auction-item-list');
     })
     .catch(err => console.log(err));

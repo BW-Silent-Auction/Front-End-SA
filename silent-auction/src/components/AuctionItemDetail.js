@@ -77,9 +77,16 @@ margin-left: 4%;
   justify-content: space-evenly;
   align-items: center;
 `;
+// const ClockContainer = styled.div`
+//   border: 1px solid red;
+//   width: 200px;
+//   display: flex;
+//   justify-content: space-between;
+// `;
 const Timer = styled.h4`
   color: red;
   font-size: 1.5rem;
+  width: 100%;
 `;
 const TimeRemain = styled.h3`
   fonst-size: 1rem;
@@ -140,25 +147,25 @@ const AuctionItemDetail = props => {
   };
   console.log(props);
 
-  useEffect(() => {
-    console.log(props);
-    axiosWithAuth()
-      .get(`/api/buyers/`)
-      .then(res => {
-        console.log(res.data);
-        return res.data;
-      })
-      .then(res => {
-        return res.map(element => {
-          return { id: element.id, username: element.username };
-        });
-      })
-      .then(res => {
-        console.log(res);
-        setBidderId(res);
-      })
-      .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   console.log(props);
+  //   axiosWithAuth()
+  //     .get(`/api/buyers/`)
+  //     .then(res => {
+  //       console.log(res.data);
+  //       return res.data;
+  //     })
+  //     .then(res => {
+  //       return res.map(element => {
+  //         return { id: element.id, username: element.username };
+  //       });
+  //     })
+  //     .then(res => {
+  //       console.log(res);
+  //       setBidderId(res);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, []);
 
   useEffect(() => {
     axiosWithAuth()
