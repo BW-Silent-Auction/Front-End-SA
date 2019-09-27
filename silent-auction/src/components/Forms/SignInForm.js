@@ -20,14 +20,17 @@ const FormContainer = styled.div`
     text-align: center;
     border-radius: 10px;
 `;
+
 const SignInTitle = styled.legend`
     font-size: 2rem;
 `;
+
 const Input = styled.input`
     margin-top: 3%;
     width: 333px;
     padding: 4% 0;
 `;
+
 const Button = styled.button`
     width: 350px;
     padding: 4% 0;
@@ -38,6 +41,7 @@ const Button = styled.button`
     font-weight: bold;
     font-size: .9rem;
 `;
+
 const SignInFieldSet = styled.fieldset`
     border: none;
 `;
@@ -68,6 +72,7 @@ const SignInForm = props => {
   };
   
   return (
+    
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <SignInFieldSet>
