@@ -57,7 +57,7 @@ const Timer = styled.h4`
 `;
 
 const SellerButtons = styled.button`
-  width: 175px;
+  width: 120px;
   padding: 2.5% 0;
   margin: 1% 3% 1% 5%
   background-color: #66b3ff;
@@ -69,7 +69,7 @@ const SellerButtons = styled.button`
 `;
 const DeleteButton = styled.button`
 
-width: 150px;
+width: 106px;
 padding: 5.5% 0;
 margin-top: 1.5%;
 margin-left: 2%;
@@ -119,7 +119,9 @@ const SellerItemCard = props => {
         </div>
         <EditDeleteContainer>
           <SellerButtons onClick={props.edit}>Edit</SellerButtons>
-          <Link to={`/products/${props.id}/delete`} ><DeleteButton>Delete</DeleteButton></Link>
+          <Link to={`/products/${props.id}/delete`} >
+            <DeleteButton>Delete</DeleteButton>
+          </Link>
       </EditDeleteContainer>
       </SellerMainDetails>
       <SellerPriceAndTime>

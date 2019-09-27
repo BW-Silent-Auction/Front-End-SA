@@ -40,7 +40,7 @@ const MainDetails = styled.div`
   text-align: center;
 `;
 const ItemImg = styled.img`
-  max-width: 350px;
+  max-width: 100%;
   height: auto;
 `;
 const Price = styled.p`
@@ -102,8 +102,8 @@ const BidderList = styled.li`
 
   list-style: none;
   &:first-child {
-    font-size: 1.5rem;
-    line-height: 1rem;
+    font-size: 1.2rem;
+    line-height: 2rem;
     border: 1px dotted #66b3ff;
     width: 100%;
     height: auto;
@@ -219,6 +219,7 @@ const AuctionItemDetail = props => {
                           Bid Price: <NewPrice>${bid.bid_amount}</NewPrice>
                         </BidderPrice>
                         <span>
+                          {console.log(bid.details)}
                           Bidder: {bid.details.username.toUpperCase()}
                         </span>
                       </BidderList>
@@ -240,14 +241,12 @@ const AuctionItemDetail = props => {
                   }
                 />
               </Timer>
-              {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
             </div>
           </PriceAndTime>
         </SplitInfo>
       </ItemDetails>
 
       <BidLogo src={image} />
->>>>>>> 6f2c3668a999b89216041a6ae4b1c19de3879d99
     </div>
   );
 };
