@@ -247,6 +247,7 @@ const AuctionItemDetail = props => {
       </ItemDetails>
 
       <BidLogo src={image} />
+>>>>>>> 6f2c3668a999b89216041a6ae4b1c19de3879d99
     </div>
   );
 };
