@@ -125,16 +125,6 @@ const SellerItemCard = props => {
       <SellerPriceAndTime>
       <div>
         <StartBid>Starting Bid Price: <Strong>${props.startingPrice}</Strong></StartBid>
-        {/* <ul>
-
-          {props.bid.map(bid => (
-            <li>
-              <p>Bid Price: {bid.bid_amount}</p>
-              <span>Bidder: {bid.buyer}</span>
-            </li>
-          ))}
-        </ul> */}
-
             </div>
             <div>
               <TimeRemain>Time remaining to bid:</TimeRemain>
@@ -152,12 +142,6 @@ const SellerItemCard = props => {
             </div>
           </SellerPriceAndTime>
         </SellerSplitInfo>
-        <div>
-          <SellerButtons onClick={props.edit}>Edit</SellerButtons>
-          <Link to={`/products/${props.id}/delete`}>
-            <DeleteButton>Delete</DeleteButton>
-          </Link>
-        </div>
       </SellerItemCards>
       
     </>
