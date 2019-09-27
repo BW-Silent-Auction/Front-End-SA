@@ -7,12 +7,13 @@ import { FaTag } from "react-icons/fa";
 import { FaDollarSign } from "react-icons/fa";
 import { FaPenFancy } from "react-icons/fa";
 import { FaFileImage } from "react-icons/fa";
+import { FaClock } from "react-icons/fa";
 import image from '../../images/placeholder_image_logo.png';
 
 
 const SellerFormContainer = styled.div`
     width: 460px;
-    margin: 5% auto 10% auto;
+    margin: 20% auto 10% auto;
     padding: 5%;
     border: 1px solid black;
     background-color: white;
@@ -195,6 +196,8 @@ const SellerForm = props => {
                     />
                     </label>
                     <label>
+                    <br></br>
+                    <FaClock />
                     <Inputs
                         id="duration"
                         type="number"
