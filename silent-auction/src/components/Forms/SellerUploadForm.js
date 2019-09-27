@@ -57,7 +57,7 @@ const NewItemButton = styled.button`
 const SellerForm = props => {
     // console.log(props);
 
-    const id = localStorage.getItem("id")
+    const id = localStorage.getItem("seller-id")
 
   const [item, setItem] = useState({
     seller_id: id,

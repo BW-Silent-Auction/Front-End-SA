@@ -50,6 +50,7 @@ const Items = styled.div`
 const AuctionItemList = props => {
   const [itemList, setItemList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  // const [itemDetail, setItemDetail] = useState({});
 
   const handleChange = event => {
     setSearchTerm(event.target.value);
@@ -70,6 +71,18 @@ const AuctionItemList = props => {
       })
       .catch(err => console.log(err));
   }, [searchTerm]);
+
+  // useEffect(() => {
+  //   console.log(itemDetail);
+  //   // console.log(props);
+  //   axiosWithAuth()
+  //     .get(`/api/products/${props.match.params.id}`)
+  //     .then(res => {
+  //       console.log(res.data)
+  //       setItemDetail(res.data)
+  //     })
+  //     .catch(err => console.log(err));
+  // }, [props.match.params.id]);
 
   return (
     <section>

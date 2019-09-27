@@ -73,6 +73,9 @@ a:hover {
   box-shadow: none;
 }
 
+.countdown{
+  margin-left: 2%;
+}
 
 /* a {
   text-decoration: none;
