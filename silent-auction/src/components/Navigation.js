@@ -18,8 +18,14 @@ import HomePage from './HomePage';
 import image from "../images/SilentLogo.png"
 
 const Nav = styled.nav`
+  width: 92%;
   border-bottom: 1px solid #66b3ff;
-  margin-top: 2%;
+  margin-right: 2%;
+  padding-top: 2%;
+  z-index: 10;
+  position: fixed;
+  top: 0px;
+  background-color: white;
 
 `;
 

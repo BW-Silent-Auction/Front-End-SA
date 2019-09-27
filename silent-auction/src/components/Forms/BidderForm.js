@@ -8,7 +8,7 @@ import { FaDollarSign } from "react-icons/fa";
 
 const BidderContainer = styled.div`
     width: 460px;
-    margin: 5% auto 10% auto;
+    margin: 15% auto 10% auto;
     padding: 5%;
     border: 1px solid black;
     background-color: white;
@@ -25,11 +25,12 @@ const BidFieldSet = styled.fieldset`
 `;
 
 const NewBidTitle = styled.legend`
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 5%;
 `;
 
 const PriceInput = styled.input`
-    padding: 4% 0;
+    padding: 5% 0;
     width: 250px;
     border: 1px solid black;
     margin: 4% 0;
@@ -39,21 +40,23 @@ const PriceInput = styled.input`
 const CancelButton = styled.button`
     width: 120px;
     padding: 4% 0;
-    margin-top: 2%;
+    margin-top: 5%;
     border-radius: 3px;
     margin-left: 1%;
     background-color: grey;
     color: white;
+    font-size: 1rem;
 `;
 const ConfirmButton = styled.button`
     width: 120px;
     padding: 4% 0;
-    margin-top: 2%;
+    margin-top: 5%;
     border-radius: 3px;
     margin-left: 1%;
     background-color: #66b3ff;
     color: black;
     font-weight: bold;
+    font-size: .9rem;
 `;
 
 const BidderForm = props => {
