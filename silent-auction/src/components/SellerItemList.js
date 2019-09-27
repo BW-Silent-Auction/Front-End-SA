@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import axiosWithAuth from "../utils/axiosWithAuth";
-import scrollToComponent from "react-scroll-to-component";
+
+import axiosWithAuth from '../utils/axiosWithAuth';
+
 
 import SellerItemCard from "./SellerItemCard";
 import SellerUploadForm from "./Forms/SellerUploadForm";
 import image from "../images/placeholder_image_logo.png";
 import styled from "styled-components";
 
+const SellerFormContainer = styled.div`
+  margin-top: 15%;
+`;
 const SellerProfile = styled.h1`
   width: 60%;
   text-align: center;
   font-size: 2rem;
-  margin: 15% 0 0 20%;
+  margin: 5% 0 0 20%;
   box-shadow: 0px 1px 10px 0 grey;
   border: 1px solid white;
   padding: 2% 0;
   // position: fixed;
+`;
+
+const SellerList = styled.div`
+margin: 2% 0;
 `;
 
 
@@ -56,6 +64,7 @@ const SellerItemList = props => {
 
   return (
     <>
+
       <section className="sell-upload-form">
         {edit === true ? (
           <SellerUploadForm
@@ -95,6 +104,7 @@ const SellerItemList = props => {
                 />
               ))
             : null}
+
         </section>
       </section>
       {/* {console.log(editItem)} */}

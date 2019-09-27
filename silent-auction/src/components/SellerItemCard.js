@@ -10,7 +10,7 @@ const SellerItemCards = styled.div`
   background: #eff4ff;
   color: black;
   width: 50%;
-  height: auto;
+  height: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,17 +18,19 @@ const SellerItemCards = styled.div`
   padding: 2%;
   margin: auto;
   margin-top: 5%;
-  box-shadow: -11px 8px 10px grey;
-  border-radius: 5px;
-  border: 1px dotted #341C09;
+  box-shadow: -11px 8px 10px grey; 
+  border-radius: 4px;
+  border: .5px dotted #341C09;
+  box-sizing: border-box;
 `;
 const SellerSplitInfo = styled.div`
-height: auto;
+
+  height: auto;
   display: flex;
-  // justify-content: space-evenly;
+
 `;
 const SellerMainDetails = styled.div`
-width: 50%;
+  width: 50%;
   border-right: 1px solid black;
   padding: 5%;
   margin-right: 6%;
@@ -37,10 +39,12 @@ width: 50%;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  
 `;
 const SellerItemImg = styled.img`
-  max-width: 350px;
+  width: 250px;
   height: auto;
+  object-fit: contain;
 `;
 const Strong = styled.strong`
   color: #4760cd;
@@ -53,7 +57,7 @@ const Timer = styled.h4`
 `;
 
 const SellerButtons = styled.button`
-  width: 200px;
+  width: 175px;
   padding: 2.5% 0;
   margin: 1% 3% 1% 5%
   background-color: #66b3ff;
@@ -61,10 +65,11 @@ const SellerButtons = styled.button`
   border-radius: 3px;
   font-weight: bold;
   font-size: 1rem;
+  
 `;
 const DeleteButton = styled.button`
 
-width: 175px;
+width: 150px;
 padding: 5.5% 0;
 margin-top: 1.5%;
 margin-left: 2%;
@@ -84,10 +89,12 @@ const StartBid = styled.p`
   line-height: 2;
 `;
 const SellerPriceAndTime = styled.div`
+width: 50%;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  alig-items: center;
 `;
 
 const EditDeleteContainer = styled.div`
