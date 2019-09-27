@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
-
-import Timer from './Timer';
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 import Countdown from 'react-countdown-now';
@@ -42,7 +40,8 @@ const Price = styled.p`
 const PlaceBidButton = styled.button`
     width: 200px;
     padding: 4% 0;
-    margin: 10px auto 10px auto;
+    margin-top: 10px auto 10px auto;
+    margin-bottom: 10px;
     background-color: #66b3ff;
     color: black;
     border-radius: 3px;
@@ -59,6 +58,7 @@ const PriceAndTime = styled.div`
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
   // const [bids, setBids] = useState({});
+  console.log(itemDetail)
 
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);
@@ -103,7 +103,7 @@ const AuctionItemDetail = props => {
           <h4>Item Title: {itemDetail.title}</h4>
           <p><strong>Description: </strong>{itemDetail.description}</p>
           <PlaceBidButton onClick={clickedHandler}>Place a bid</PlaceBidButton>
-          <button onClick={handleGoBack}>Go Back</button>
+          <PlaceBidButton onClick={handleGoBack}>Go Back</PlaceBidButton>
         </div>
       </MainDetails>
       <PriceAndTime>
@@ -113,14 +113,13 @@ const AuctionItemDetail = props => {
           {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
-              <span>Bidder: {bid.buyer}</span>
+              <span>Bidder ID: {bid.buyer_id}</span>
             </li>
           )) : <p>No bids</p>}
         </ul>
         <h3>Time Remaining to Bid:</h3>
         <Countdown date={Date.now() + (itemDetail.duration * 24 * 3600000)} />
         <span> </span><FaClock/>
-        {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
       </PriceAndTime>
       {/* <div>
        

@@ -57,7 +57,7 @@ const NewItemButton = styled.button`
 const SellerForm = props => {
     // console.log(props);
 
-    const id = localStorage.getItem("id")
+    const id = localStorage.getItem("seller-id")
 
   const [item, setItem] = useState({
     seller_id: id,
@@ -127,12 +127,20 @@ const SellerForm = props => {
     })
     .catch(err => console.log(err))
   } else if (props.edit === true) {
-    // console.log(props.editItem)
+    console.log(item)
     // setItem(props.editItem);
+    const fd = new FormData();
+    console.log(props.Eid)
+    // fd.append("seller_id", item.seller_id)
+    fd.append("title", item.title)
+    fd.append("description", item.description)
+    fd.append("image", item.image)
+    fd.append("starting_price", item.starting_price)
+    fd.append("duration", item.duration)
     axiosWithAuth()
-    .put(`/api/products/${props.Eid}`, item)
+    .put(`/api/products/${props.Eid}`, fd)
     .then(res => {
-        console.log(res);
+        console.log(res.data);
         console.log("item edited!!")
         // console.log(props);
         props.history.push('/edit-success/')
