@@ -102,23 +102,6 @@ const AuctionItemDetail = props => {
   const [bidderId, setBidderId] = useState([]);
   const [bidderId2, setBidderId2] = useState([]);
 
-  const bidderNameArray = bidderId.filter(element => {
-    return (
-      element.id ===
-      bidderId2.find(param => {
-        return param === element.id;
-      })
-    );
-  });
-
-  // const bidderName = bidderNameArray.filter((param) => {
-  //   console.log(itemDetail.id)
-  //   return param.id === itemDetail.id;
-  // })
-
-  console.log(bidderNameArray);
-  console.log(itemDetail);
-
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);
     console.log("clicked");
@@ -154,6 +137,7 @@ const AuctionItemDetail = props => {
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data);
+
         setItemDetail(res.data);
         return res.data;
       })
@@ -172,15 +156,6 @@ const AuctionItemDetail = props => {
       })
       .catch(err => console.log(err));
   }, [props.match.params.id]);
-
-  // const bidderName = bidderNameArray.filter((param) => {
-  //   console.log(itemDetail)
-  //   return param.id === itemDetail.bids.filter(element => {
-  //     return element.buyer_id === param.id
-  //   })
-  // })
-
-  // console.log(bidderName)
 
   return (
     <div>
@@ -217,7 +192,9 @@ const AuctionItemDetail = props => {
                         <BidderPrice>
                           Bid Price: <NewPrice>${bid.bid_amount}</NewPrice>
                         </BidderPrice>
-                        <span>Bidder: {bid.details.username}</span>
+                        <span>
+                          Bidder: {bid.details.username.toUpperCase()}
+                        </span>
                       </BidderList>
                     ))
                 ) : (
@@ -231,7 +208,10 @@ const AuctionItemDetail = props => {
                 <FaClock />
                 &nbsp;&nbsp;
                 <Countdown
-                  date={Date.now() + itemDetail.duration * 24 * 3600000}
+                  date={
+                    new Date(itemDetail.created_at).getTime() +
+                    itemDetail.duration * 24 * 3600000
+                  }
                 />
               </Timer>
               {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
