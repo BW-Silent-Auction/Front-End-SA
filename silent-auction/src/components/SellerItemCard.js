@@ -1,5 +1,4 @@
 import React from "react";
-import Timer from "./Timer";
 import { Route } from "react-router";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -57,7 +56,7 @@ const SellerItemCard = props => {
       <SellerSplitInfo>
       <SellerMainDetails>
         <SellerItemImg src={props.image} alt="Card image" />
-        {console.log(props.image)}
+        {/* {console.log(props.image)} */}
         <div>
           <h4>{props.title}</h4>
           <p>{props.description}</p>
