@@ -8,7 +8,7 @@ import { FaKey } from "react-icons/fa";
 
 const FormContainer = styled.div`
     width: 460px;
-    margin: 5% auto 10% auto;
+    margin: 15% auto 10% auto;
     padding: 5%;
     border: 1px solid black;
     background-color: white;
@@ -20,24 +20,29 @@ const FormContainer = styled.div`
     text-align: center;
     border-radius: 10px;
 `;
+
 const SignInTitle = styled.legend`
     font-size: 2rem;
+    margin-bottom: 5%;
 `;
+
 const Input = styled.input`
     margin-top: 3%;
     width: 333px;
     padding: 4% 0;
 `;
+
 const Button = styled.button`
     width: 350px;
     padding: 4% 0;
-    margin-top: 2.5%;
+    margin-top: 5%;
     background-color: #66b3ff;
     color: black;
     border-radius: 3px;
     font-weight: bold;
-    font-size: .9rem;
+    font-size: 1rem;
 `;
+
 const SignInFieldSet = styled.fieldset`
     border: none;
 `;
@@ -68,6 +73,7 @@ const SignInForm = props => {
   };
   
   return (
+    
     <FormContainer>
       <form onSubmit={handleSubmit}>
         <SignInFieldSet>

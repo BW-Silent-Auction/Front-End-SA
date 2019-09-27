@@ -14,7 +14,7 @@ import { registerBuyer, registerSeller } from "../../actions";
 const FormContainer = styled.div`
 
     width: 460px;
-    margin: 5% auto 10% auto;
+    margin: 15% auto 10% auto;
     padding: 6%;
     border: 1px solid black;
     background-color: white;
@@ -59,7 +59,7 @@ const RegisterInput = styled.div`
     background-color: #66b3ff;
     color: black;
     font-weight: bold;
-    font-size: .9rem;
+    font-size: 1rem;
  `;
   
 function RegisterForm({ registerBuyer, registerSeller, history }) {
