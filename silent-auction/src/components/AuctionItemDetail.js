@@ -159,7 +159,7 @@ const AuctionItemDetail = props => {
           {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
-              {/* <span>Bidder ID: {itemDetail.id}</span> */}
+              <span>Bidder ID: {itemDetail.id}</span>
             </li>
           )) : <p>No bids</p>}
         </ul>
