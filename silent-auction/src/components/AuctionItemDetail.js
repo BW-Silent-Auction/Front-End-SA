@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
-import Countdown from 'react-countdown-now';
-import image from "../images/BidLogo.png"
-
+import Countdown from "react-countdown-now";
+import image from "../images/BidLogo.png";
 
 const ItemDetails = styled.div`
+
 background: #eff4ff;
 color: black;
 width: 60%;
@@ -23,6 +22,7 @@ margin-top: 10%;
 box-shadow: -11px 8px 10px grey; 
 border-radius: 5px;
 border: 1px dotted #341C09;
+
 
 `;
 const SplitInfo = styled.div`
@@ -50,6 +50,7 @@ const Price = styled.p`
   font-weight: bold;
 `;
 const PlaceBidButton = styled.button`
+
     width: 200px;
     padding: 4% 0;
     margin: 10px 0 10px 5%;
@@ -58,6 +59,7 @@ const PlaceBidButton = styled.button`
     border-radius: 3px;
     font-weight: bold;
     font-size: 1.1rem;
+
 `;
 const GoBackButton = styled.button`
   width: 150px;
@@ -85,6 +87,7 @@ const TimeRemain = styled.h3`
 const StartBid = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
+
   `;
   const ULBids = styled.ul`
     padding-left: 0;
@@ -95,7 +98,8 @@ const StartBid = styled.p`
   text-align: center;  
   margin-left: 5%;
   `;
-  const BidderList = styled.li`
+const BidderList = styled.li`
+
   list-style: none;
   &:first-child {
     font-size: 2rem;
@@ -106,6 +110,7 @@ const StartBid = styled.p`
     padding: 0 6% 15% 6%;
     text-align: top;
   }
+
   `;
   const BidLogo = styled.img`
     height: 250px;
@@ -120,49 +125,70 @@ const StartBid = styled.p`
   `;
 
 
-
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
-  // const [bids, setBids] = useState({});
+  const [bidderId, setBidderId] = useState([]);
+  const [bidderId2, setBidderId2] = useState([]);
 
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);
-    console.log("clicked")
+    console.log("clicked");
   };
 
   const handleGoBack = () => {
     props.history.push(`/auction-item-list/`);
-  }
+  };
   console.log(props);
+
   useEffect(() => {
-    console.log(itemDetail);
-    // console.log(props);
+    console.log(props);
+    axiosWithAuth()
+      .get(`/api/buyers/`)
+      .then(res => {
+        console.log(res.data);
+        return res.data;
+      })
+      .then(res => {
+        return res.map(element => {
+          return { id: element.id, username: element.username };
+        });
+      })
+      .then(res => {
+        console.log(res);
+        setBidderId(res);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
+  useEffect(() => {
     axiosWithAuth()
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
-        console.log(res.data)
-        setItemDetail(res.data)
+        console.log(res.data);
+
+        setItemDetail(res.data);
+        return res.data;
+      })
+      .then(res => {
+        return res.bids;
+      })
+      .then(res => {
+        console.log(res);
+        return res.map(element => {
+          return element.buyer_id;
+        });
+      })
+      .then(res => {
+        console.log(res);
+        setBidderId2(res);
       })
       .catch(err => console.log(err));
   }, [props.match.params.id]);
 
-  // useEffect(() => {
-  //   console.log(props);
-  //   axios
-  //     .get(`https://bw-silent-auction.herokuapp.com/api/products/${props.match.params.id}/bids`)
-  //     .then(res => {
-  //       console.log(res.data)
-  //       // setBids(res.data)
-  //     })
-  //     .catch(err => console.log(err));
-  // }, [props.match.params.id]);
-
-
   return (
     <div>
-      
       <ItemDetails>
-        <SplitInfo className='detail-separation'>
+        <SplitInfo className="detail-separation">
           <MainDetails>
             <ItemImg src={itemDetail.image} alt="image" />
             <div>
@@ -170,27 +196,49 @@ const AuctionItemDetail = props => {
               <p><strong>Description: </strong>{itemDetail.description}</p>
                 <PlaceBidButton onClick={clickedHandler}>Place a Bid</PlaceBidButton>
                 <GoBackButton onClick={handleGoBack}>Back to List</GoBackButton>
+
             </div>
           </MainDetails>
           <PriceAndTime>
             <div>
-            <StartBid>Starting Price: </StartBid>
-            <Price>${itemDetail.starting_price}</Price>
-            <HighestHeader>Highest Bid:</HighestHeader>
+
+              <StartBid>Starting Price: </StartBid>
+              <Price>${itemDetail.starting_price}</Price>
+              <HighestHeader>Highest Bid:</HighestHeader>
               <ULBids>
-                {itemDetail && itemDetail.bids && itemDetail.bids.length !== 0 ? itemDetail.bids.sort(( a , b ) => {return parseInt(b.bid_amount) - parseInt(a.bid_amount)}   ).map(bid => (
-                  <BidderList>
-                    <br></br>
-                    <BidderPrice>Bid Price: <NewPrice>${bid.bid_amount}</NewPrice></BidderPrice>
-                    <span>Bidder: {bid.buyer_username}</span>
-                  </BidderList>
-                ))  : <p>No current bids</p>}
+                {itemDetail &&
+                itemDetail.bids &&
+                itemDetail.bids.length !== 0 ? (
+                  itemDetail.bids
+                    .sort((a, b) => {
+                      return parseInt(b.bid_amount) - parseInt(a.bid_amount);
+                    })
+                    .map(bid => (
+                      <BidderList>
+                        <BidderPrice>
+                          Bid Price: <NewPrice>${bid.bid_amount}</NewPrice>
+                        </BidderPrice>
+                        <span>
+                          Bidder: {bid.details.username.toUpperCase()}
+                        </span>
+                      </BidderList>
+                    ))
+                ) : (
+                  <p>No current bids</p>
+                )}
               </ULBids>
             </div>
             <div>
               <TimeRemain>Time Remaining to Bid:</TimeRemain>
               <Timer>
-              <FaClock/>&nbsp;&nbsp;<Countdown date={Date.now() + (itemDetail.duration * 24 * 3600000)} />
+                <FaClock />
+                &nbsp;&nbsp;
+                <Countdown
+                  date={
+                    new Date(itemDetail.created_at).getTime() +
+                    itemDetail.duration * 24 * 3600000
+                  }
+                />
               </Timer>
               {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
             </div>
@@ -198,8 +246,7 @@ const AuctionItemDetail = props => {
         </SplitInfo>
       </ItemDetails>
 
-      <BidLogo src={image}/>
-
+      <BidLogo src={image} />
     </div>
   );
 };
