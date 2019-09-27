@@ -137,6 +137,7 @@ const AuctionItemDetail = props => {
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data);
+
         setItemDetail(res.data);
         return res.data;
       })
@@ -207,7 +208,10 @@ const AuctionItemDetail = props => {
                 <FaClock />
                 &nbsp;&nbsp;
                 <Countdown
-                  date={Date.now() + itemDetail.duration * 24 * 3600000}
+                  date={
+                    new Date(itemDetail.created_at).getTime() +
+                    itemDetail.duration * 24 * 3600000
+                  }
                 />
               </Timer>
               {/* <Timer bidDeadline={itemDetail.bidDeadline} /> */}
