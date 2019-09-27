@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 import ConfirmDelete from "./ConfirmDelete";
-import Countdown from 'react-countdown-now';
-
+import Countdown from "react-countdown-now";
 
 const SellerItemCards = styled.div`
   background: #eff4ff;
@@ -16,7 +15,7 @@ const SellerItemCards = styled.div`
   flex-direction: column;
   justify-content: space-between;
   font-size: 1rem;
-  padding:2%;
+  padding: 2%;
   margin: auto;
   margin-top: 5%;
   box-shadow: -11px 8px 10px grey; 
@@ -69,6 +68,7 @@ const SellerButtons = styled.button`
   
 `;
 const DeleteButton = styled.button`
+
 width: 150px;
 padding: 5.5% 0;
 margin-top: 1.5%;
@@ -87,7 +87,7 @@ const StartBid = styled.p`
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 2;
-  `;
+`;
 const SellerPriceAndTime = styled.div`
 width: 50%;
   text-align: center;
@@ -105,6 +105,7 @@ const EditDeleteContainer = styled.div`
 const SellerItemCard = props => {
   return (
     <>
+
     {/* {console.log(props)} */}
     <Route path={`/product/${props.id}/delete`} render={() => <ConfirmDelete id={props.id} />}></Route>
     <SellerItemCards>
@@ -125,6 +126,7 @@ const SellerItemCard = props => {
       <div>
         <StartBid>Starting Bid Price: <Strong>${props.startingPrice}</Strong></StartBid>
         {/* <ul>
+
           {props.bid.map(bid => (
             <li>
               <p>Bid Price: {bid.bid_amount}</p>
@@ -132,20 +134,32 @@ const SellerItemCard = props => {
             </li>
           ))}
         </ul> */}
-      </div>
-      <div>
-        <TimeRemain>Time remaining to bid:</TimeRemain>
-        {/* {console.log(props.duration)} */}
-          <Timer>
-          <FaClock/>&nbsp;&nbsp;
-            <Countdown date={Date.now() + (props.duration * 24 * 3600000)} />
-          </Timer>
-       
-      </div>
-      </SellerPriceAndTime>
-      </SellerSplitInfo>
-     
-    </SellerItemCards>
+
+            </div>
+            <div>
+              <TimeRemain>Time remaining to bid:</TimeRemain>
+              {/* {console.log(props.duration)} */}
+              <Timer>
+                <FaClock />
+                &nbsp;&nbsp;
+                <Countdown
+                  date={
+                    new Date(props.created).getTime() +
+                    props.duration * 24 * 3600000
+                  }
+                />
+              </Timer>
+            </div>
+          </SellerPriceAndTime>
+        </SellerSplitInfo>
+        <div>
+          <SellerButtons onClick={props.edit}>Edit</SellerButtons>
+          <Link to={`/products/${props.id}/delete`}>
+            <DeleteButton>Delete</DeleteButton>
+          </Link>
+        </div>
+      </SellerItemCards>
+      
     </>
   );
 };
