@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
 
-
 import styled from "styled-components";
 import { FaClock } from "react-icons/fa";
 import Countdown from 'react-countdown-now';
@@ -104,6 +103,7 @@ const StartBid = styled.p`
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
   // const [bids, setBids] = useState({});
+  console.log(itemDetail)
 
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);
@@ -177,6 +177,7 @@ const AuctionItemDetail = props => {
       </ItemDetails>
 
       <BidLogo src={image}/>
+
 
     </div>
   );

@@ -88,7 +88,7 @@ const SellerItemCard = props => {
       <SellerSplitInfo>
       <SellerMainDetails>
         <SellerItemImg src={props.image} alt="Card image" />
-        {console.log(props.image)}
+        {/* {console.log(props.image)} */}
         <div>
           <h4>{props.title}</h4>
           <p>{props.description}</p>
