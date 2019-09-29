@@ -22,7 +22,6 @@ const SellerFormContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    
     border-radius: 10px;
     text-align: center;
 `;
@@ -56,9 +55,8 @@ const NewItemButton = styled.button`
 
 
 const SellerForm = props => {
-    // console.log(props);
 
-    const id = localStorage.getItem("seller-id")
+const id = localStorage.getItem("seller-id")
 
   const [item, setItem] = useState({
     seller_id: id,
@@ -71,15 +69,11 @@ const SellerForm = props => {
 
   const handleChange = e => {
     setItem({ ...item, [e.target.name]: e.target.value });
-    //  console.log(item);
   };
 
   const handlePickChange = e => {
     setItem({ ...item, [e.target.name]: e.target.files[0] });
-    //  console.log(item);
   }
-
-
 
   useEffect(() => {
       if (props.edit === true) {
@@ -91,25 +85,11 @@ const SellerForm = props => {
             duration: props.Eduration
         })
         delete item.seller_id;
-        // delete item.duration;
-        // console.log(item);
-        // console.log(props.Eid)
       }
   }, [props.edit, props.editItem])
 
-//     useEffect(() => {
-//       if (props.edit === true && !props.image) {
-//         setItem({
-//             image: props.Eimage
-//         })
-//       }
-//     //   console.log(image)
-//   }, []);
-
   const handleSubmit = e => {
-    // console.log(item);
     e.preventDefault();
-    // console.log(props.edit)
     if (props.edit === false) {
         console.log(item)
     const fd = new FormData();
@@ -129,10 +109,8 @@ const SellerForm = props => {
     .catch(err => console.log(err))
   } else if (props.edit === true) {
     console.log(item)
-    // setItem(props.editItem);
     const fd = new FormData();
     console.log(props.Eid)
-    // fd.append("seller_id", item.seller_id)
     fd.append("title", item.title)
     fd.append("description", item.description)
     fd.append("image", item.image)
@@ -143,7 +121,6 @@ const SellerForm = props => {
     .then(res => {
         console.log(res.data);
         console.log("item edited!!")
-        // console.log(props);
         props.history.push('/edit-success/')
     })
     .catch(err => console.log(err))
@@ -161,7 +138,6 @@ const SellerForm = props => {
                         id="item-img"
                         type="file"
                         name="image"
-                        // files={item.image}
                         onChange={handlePickChange}
                         />
                     </label>
@@ -232,4 +208,3 @@ const SellerForm = props => {
   );
 };
 export default SellerForm;
-//

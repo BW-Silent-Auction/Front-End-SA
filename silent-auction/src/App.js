@@ -21,7 +21,6 @@ to {opacity: 1;}
 } 
 `;
 
-
 export default function App() {
   return (
     <MainApp>

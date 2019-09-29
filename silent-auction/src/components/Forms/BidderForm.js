@@ -75,8 +75,6 @@ const BidderForm = props => {
     
     const handleSubmit = e => {
       e.preventDefault();
-      // console.log(props.match.params.id)
-      // axiosWithAuth()
       axiosWithAuth()
       .post(`/api/products/${props.match.params.id}/bids`, price)
       .then(res => {

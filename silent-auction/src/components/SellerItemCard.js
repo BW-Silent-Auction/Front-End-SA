@@ -23,12 +23,12 @@ const SellerItemCards = styled.div`
   border: .5px dotted #341C09;
   box-sizing: border-box;
 `;
-const SellerSplitInfo = styled.div`
 
+const SellerSplitInfo = styled.div`
   height: auto;
   display: flex;
-
 `;
+
 const SellerMainDetails = styled.div`
   width: 50%;
   border-right: 1px solid black;
@@ -39,13 +39,14 @@ const SellerMainDetails = styled.div`
   justify-content: space-around;
   align-items: center;
   text-align: center;
-  
 `;
+
 const SellerItemImg = styled.img`
   width: 250px;
   height: auto;
   object-fit: contain;
 `;
+
 const Strong = styled.strong`
   color: #4760cd;
   font-size: 2rem;
@@ -65,31 +66,32 @@ const SellerButtons = styled.button`
   border-radius: 3px;
   font-weight: bold;
   font-size: 1rem;
-  
 `;
+
 const DeleteButton = styled.button`
-
-width: 106px;
-padding: 5.5% 0;
-margin-top: 1.5%;
-margin-left: 2%;
-background-color: lightgrey;
-color: black;
-border-radius: 3px;
-// font-weight: bold;
-font-size: 1rem;
-
+  width: 106px;
+  padding: 5.5% 0;
+  margin-top: 1.5%;
+  margin-left: 2%;
+  background-color: lightgrey;
+  color: black;
+  border-radius: 3px;
+  // font-weight: bold;
+  font-size: 1rem;
 `;
+
 const TimeRemain = styled.h3`
   fonst-size: 1rem;
 `;
+
 const StartBid = styled.p`
   font-size: 1.3rem;
   font-weight: bold;
   line-height: 2;
 `;
+
 const SellerPriceAndTime = styled.div`
-width: 50%;
+  width: 50%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -105,14 +107,11 @@ const EditDeleteContainer = styled.div`
 const SellerItemCard = props => {
   return (
     <>
-
-    {/* {console.log(props)} */}
     <Route path={`/product/${props.id}/delete`} render={() => <ConfirmDelete id={props.id} />}></Route>
     <SellerItemCards>
       <SellerSplitInfo>
       <SellerMainDetails>
         <SellerItemImg src={props.image} alt="Card image" />
-        {/* {console.log(props.image)} */}
         <div>
           <h4>{props.title}</h4>
           <p>{props.description}</p>
@@ -130,7 +129,6 @@ const SellerItemCard = props => {
             </div>
             <div>
               <TimeRemain>Time remaining to bid:</TimeRemain>
-              {/* {console.log(props.duration)} */}
               <Timer>
                 <FaClock />
                 &nbsp;&nbsp;
@@ -145,7 +143,6 @@ const SellerItemCard = props => {
           </SellerPriceAndTime>
         </SellerSplitInfo>
       </SellerItemCards>
-      
     </>
   );
 };

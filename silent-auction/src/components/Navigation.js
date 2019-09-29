@@ -26,7 +26,6 @@ const Nav = styled.nav`
   position: fixed;
   top: 0px;
   background-color: white;
-
 `;
 
 const NavContainer = styled.div`
@@ -51,13 +50,10 @@ const Logo = styled.img`
   height: auto;
 `;
 
-
 export default function Navigation() {
 
     return (
-
         <div>
-
           <Router>
             <div>
               <Nav>
@@ -82,7 +78,6 @@ export default function Navigation() {
                     </UlNav>
                   </NavContainer>
                 </Nav>
-
               <Switch>
                   <Route exact path="/logout-success/" component={LogoutSuccess} />
                   <Route exact path="/register" component={RegisterForm} />
@@ -97,10 +92,8 @@ export default function Navigation() {
                   <Route exact path="/upload-success" component={UploadItemSuccess} />
                   <Route exact path="/" component={HomePage} />
               </Switch>
-            
             </div>
           </Router>
-
         </div>
       );
 };

@@ -147,47 +147,12 @@ const AuctionItemDetail = props => {
   };
   console.log(props);
 
-  // useEffect(() => {
-  //   console.log(props);
-  //   axiosWithAuth()
-  //     .get(`/api/buyers/`)
-  //     .then(res => {
-  //       console.log(res.data);
-  //       return res.data;
-  //     })
-  //     .then(res => {
-  //       return res.map(element => {
-  //         return { id: element.id, username: element.username };
-  //       });
-  //     })
-  //     .then(res => {
-  //       console.log(res);
-  //       setBidderId(res);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, []);
-
   useEffect(() => {
     axiosWithAuth()
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
         console.log(res.data);
-
         setItemDetail(res.data);
-        return res.data;
-      })
-      .then(res => {
-        return res.bids;
-      })
-      .then(res => {
-        console.log(res);
-        return res.map(element => {
-          return element.buyer_id;
-        });
-      })
-      .then(res => {
-        console.log(res);
-        setBidderId2(res);
       })
       .catch(err => console.log(err));
   }, [props.match.params.id]);

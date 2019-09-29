@@ -10,34 +10,32 @@ const ItemCards = styled.div`
   text-align: center;
   border: .5px dotted #341C09;
   margin: 0 auto;
-
 `;
 
 const CardImg = styled.img`
-    width: 250px;
-    max-height: 400px;
-    margin: 5%;
+  width: 250px;
+  max-height: 400px;
+  margin: 5%;
 `;
+
 const Strong = styled.strong`
-font-size:1rem;
-color: red;
+  font-size:1rem;
+  color: red;
 `;
+
 const DetailsButton = styled.button`
-    width: 150px;
-    padding: 3% 0;
-    margin: 4% 0;
-    background-color: #66b3ff;
-    color: black;
-    border-radius: 3px;
-    font-weight: bold;
+  width: 150px;
+  padding: 3% 0;
+  margin: 4% 0;
+  background-color: #66b3ff;
+  color: black;
+  border-radius: 3px;
+  font-weight: bold;
 `;
-
-
 
 const ItemCard = props => {
   return (
     <ItemCards>
-      {/* {console.log(props)} */}
       <CardImg className="card-image" src={props.image} alt="Card" />
       <div>
         <h4 className="card-title">{props.title}</h4>
