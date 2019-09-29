@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
-
 import axiosWithAuth from '../utils/axiosWithAuth';
-
-
 import SellerItemCard from "./SellerItemCard";
 import SellerUploadForm from "./Forms/SellerUploadForm";
 import image from "../images/placeholder_image_logo.png";
@@ -13,6 +9,7 @@ import styled from "styled-components";
 const SellerFormContainer = styled.div`
   margin-top: 15%;
 `;
+
 const SellerProfile = styled.h1`
   width: 60%;
   text-align: center;
@@ -28,16 +25,14 @@ const SellerList = styled.div`
 margin: 2% 0;
 `;
 
-
 const SellerItemList = props => {
-  // console.log(props)
+
   const [sellerItemList, setSellerItemList] = useState([]);
   const id = localStorage.getItem("seller-id");
   const [editItem, setEditItem] = useState({});
   const [edit, setEdit] = useState(false);
 
   useEffect(() => {
-    // console.log(id);
     axiosWithAuth()
       .get(`/api/sellers/${id}/auctions`)
       .then(res => {
@@ -54,17 +49,12 @@ const SellerItemList = props => {
     // scrollToComponent(Form);
   };
 
-  // console.log(Object.keys(editItem).length === 0);
-
   const deleteHandler = id => {
-    console.log(`delete`);
-    // props.match.params.id = id;
     props.history.push("/confirm-delete/");
   };
 
   return (
     <>
-
       <section className="sell-upload-form">
         {edit === true ? (
           <SellerUploadForm
@@ -73,7 +63,6 @@ const SellerItemList = props => {
             EstartingPrice={editItem.starting_price}
             Etitle={editItem.title}
             Eimage={editItem.image}
-            // placeholderImage={image}
             Eid={editItem.id}
             Eduration={editItem.duration}
             edit={edit}
@@ -107,7 +96,6 @@ const SellerItemList = props => {
 
         </section>
       </section>
-      {/* {console.log(editItem)} */}
     </>
   );
 };

@@ -12,23 +12,25 @@ import { connect } from "react-redux";
 import { registerBuyer, registerSeller } from "../../actions";
 
 const FormContainer = styled.div`
-
-    width: 460px;
-    margin: 15% auto 10% auto;
-    padding: 6%;
-    border: 1px solid black;
-    background-color: white;
-    box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
-    font-size: .8rem;
-    border-radius: 10px;
-    text-align: center;
+  width: 460px;
+  margin: 15% auto 10% auto;
+  padding: 6%;
+  border: 1px solid black;
+  background-color: white;
+  box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
+  font-size: .8rem;
+  border-radius: 10px;
+  text-align: center;
 `;
+
 const RegisterFieldSet = styled.fieldset`
   border: none;
 `;
+
 const RegisterTitle = styled.legend`
     font-size: 2rem;
 `;
+
 const RegisterInput = styled.div`
   padding: 1rem;
   display: flex;
@@ -47,8 +49,8 @@ const RegisterInput = styled.div`
  `;
 
  const Checkboxes = styled.div`
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
  const Button = styled.input`
@@ -78,7 +80,6 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
   })
 
   const handleCheck = e => {
-    // setCheck(e.target.name)
     if (e.target.value === "buyer") {
       setCheck({ buyer: true })
     } else if (e.target.value === "seller") {
@@ -89,7 +90,6 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });
-    // console.log(register);
   };
     
   useEffect(() => console.log("submit with useEffect"));
@@ -229,19 +229,6 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
       </FormContainer>
     </div>
   );
-
 };
-// const mapStateToProps = state => {
-//   return {
-//     data: state.data,
-//     isFetching: state.isFetching,
-//     error: state.error
-//   };
-// };
-
-// export default connect(
-//   mapStateToProps,
-//   { registerBuyer, registerSeller }
-// )(RegisterForm);
 
 export default RegisterForm;

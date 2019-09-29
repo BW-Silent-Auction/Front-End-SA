@@ -5,11 +5,12 @@ import image from "../images/WavingBye.jpg"
 const SignOutContainer = styled.div`
     margin: 10% 0 5% 0;
     text-align: center;
-    
 `;
+
 const ByeImg = styled.img`
     width: 20%;
 `;
+
 const LogOutHeader = styled.h1`
   width: 60%;
   text-align: center;
@@ -21,14 +22,14 @@ const LogOutHeader = styled.h1`
 `;
 
 const BackToRegisterButton = styled.button`
-width: 250px;
-padding: 2% 0;
-margin-top: 5%;
-border-radius: 3px;
-background-color: #66b3ff;
-color: black;
-font-weight: bold;
-font-size: 1rem;
+    width: 250px;
+    padding: 2% 0;
+    margin-top: 5%;
+    border-radius: 3px;
+    background-color: #66b3ff;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
 `;
 
 const LogoutSuccess = (props) => {

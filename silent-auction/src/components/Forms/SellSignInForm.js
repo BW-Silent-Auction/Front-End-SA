@@ -43,7 +43,6 @@ const SignInFieldSet = styled.fieldset`
     border: none;
 `;
 
-
 const SignInForm = props => {
   const [signIn, setSignIn] = useState({
     username: '', 
@@ -51,7 +50,6 @@ const SignInForm = props => {
   });
 
   const handleChange = e => {
-    // console.log(signIn);
     setSignIn({ ...signIn, [e.target.name]: e.target.value });
   };
 

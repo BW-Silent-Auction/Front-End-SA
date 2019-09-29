@@ -55,7 +55,6 @@ const SignInForm = props => {
   });
 
   const handleChange = e => {
-    // console.log(signIn);
     setSignIn({ ...signIn, [e.target.name]: e.target.value });
   };
 
