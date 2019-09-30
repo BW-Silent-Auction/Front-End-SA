@@ -15,17 +15,16 @@ import styled from  'styled-components';
 import UploadItemSuccess from "./SellerUploadSuccess";
 import LogoutSuccess from './LogoutSuccess';
 import HomePage from './HomePage';
-import image from "../images/SilentLogo.png"
+import image from "../images/silent-auction-portfolio.png"
 
 const Nav = styled.nav`
-  width: 92%;
-  border-bottom: 1px solid #66b3ff;
-  margin-right: 2%;
+  width: 100%;
+  margin-right: 10%;
   padding-top: 2%;
   z-index: 10;
-  position: fixed;
   top: 0px;
-  background-color: white;
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  border-radius: 10px;
 `;
 
 const NavContainer = styled.div`
@@ -35,19 +34,27 @@ const NavContainer = styled.div`
 `;
 
 const UlNav = styled.ul`
-  width: 50%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
-  margin-right: 5%;
+  margin-right: 2%;
+  margin-bottom: auto;
 `;
   
 const LiNav= styled.li`
   list-style: none;
+  /* border: 1px solid lightblue; */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px lightgrey;
+  margin-top: -17px;
 `;
 
 const Logo = styled.img`
-  width: 40%;
+  width: 90px;
   height: auto;
+  margin-top: -26px;
+  margin-left: 30px;
 `;
 
 export default function Navigation() {

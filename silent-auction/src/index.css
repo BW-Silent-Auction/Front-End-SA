@@ -26,10 +26,6 @@ main {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
-ul {
-  list-style: none;
-}
-
 a {
   background-color: transparent;
   color: #341C09;
@@ -41,6 +37,7 @@ a {
 a:active,
 a:hover {
   outline-width: 0;
+  color: dodgerblue;
 }
 
 #emoji {
@@ -49,4 +46,8 @@ a:hover {
 
 .countdown{
   margin-left: 2%;
+}
+
+.card-title {
+  font-size: 1.2rem;
 }

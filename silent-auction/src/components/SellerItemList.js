@@ -15,10 +15,11 @@ const SellerProfile = styled.h1`
   text-align: center;
   font-size: 2rem;
   margin: 5% 0 0 20%;
+  border-radius: 10px;
   box-shadow: 0px 1px 10px 0 grey;
-  border: 1px solid white;
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
   padding: 2% 0;
-  // position: fixed;
+  /* position: fixed; */
 `;
 
 const SellerList = styled.div`

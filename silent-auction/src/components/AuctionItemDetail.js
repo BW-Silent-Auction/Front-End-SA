@@ -7,32 +7,33 @@ import Countdown from "react-countdown-now";
 import image from "../images/BidLogo.png";
 
 const ItemDetails = styled.div`
-width: 90%;
-background: #eff4ff;
-color: black;
-width: 60%;
-height: auto;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-font-size: 1rem;
-padding:2%;
-margin: auto;
-margin-top: 10%;
-box-shadow: -11px 8px 10px grey; 
-border-radius: 5px;
-border: 1px dotted #341C09;
+  width: 90%;
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  color: black;
+  width: 60%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding:2%;
+  margin: auto;
+  margin-top: 10%;
+  box-shadow: -11px 8px 10px grey; 
+  border-radius: 5px;
+  border: 1px dotted #341C09;
 `;
 const SplitInfo = styled.div`
-width: 90%;
+  width: 90%;
   height: auto;
   display: flex;
 `;
 const MainDetails = styled.div`
-  width: 50%;
+  width: 60%;
   border-right: 1px solid black;
   padding: 5%;
   margin: auto 6% auto 0;
+  margin-right: 17px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -40,7 +41,7 @@ const MainDetails = styled.div`
   text-align: center;
 `;
 const ItemImg = styled.img`
-  max-width: 100%;
+  max-width: 400px;
   height: auto;
 `;
 const Price = styled.p`
@@ -49,16 +50,14 @@ const Price = styled.p`
   font-weight: bold;
 `;
 const PlaceBidButton = styled.button`
-
-    width: 200px;
-    padding: 4% 0;
-    margin: 10px 0 10px 5%;
-    background-color: #66b3ff;
-    color: black;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: 1.1rem;
-
+  width: 200px;
+  padding: 4% 0;
+  margin: 10px 0 10px 5%;
+  background-color: #66b3ff;
+  color: black;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 1.1rem;
 `;
 const GoBackButton = styled.button`
   width: 150px;
@@ -77,36 +76,26 @@ margin-left: 4%;
   justify-content: space-evenly;
   align-items: center;
 `;
-// const ClockContainer = styled.div`
-//   border: 1px solid red;
-//   width: 200px;
-//   display: flex;
-//   justify-content: space-between;
-// `;
 const Timer = styled.h4`
   color: red;
   font-size: 1.5rem;
-  width: 100%;
+  width: 200px;
 `;
 const TimeRemain = styled.h3`
-  fonst-size: 1rem;
+  font-size: 1rem;
 `;
 const StartBid = styled.p`
   font-size: 1.2rem;
   font-weight: bold;
-
-  `;
-  const ULBids = styled.ul`
-    padding-left: 0;
-
-  `;
-
+`;
+const ULBids = styled.ul`
+  padding-left: 0;
+`;
   const HighestHeader = styled.h2`
   text-align: center;  
   margin-left: 5%;
-  `;
+`;
 const BidderList = styled.li`
-
   list-style: none;
   &:first-child {
     font-size: 1.2rem;
@@ -114,10 +103,9 @@ const BidderList = styled.li`
     border: 1px dotted #66b3ff;
     width: 100%;
     height: auto;
-    padding: 0 6% 15% 6%;
+    /* padding: 0 6% 15% 6%; */
     text-align: top;
   }
-
   `;
   const BidLogo = styled.img`
     height: 250px;
@@ -131,11 +119,8 @@ const BidderList = styled.li`
     color: red;
   `;
 
-
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
-  const [bidderId, setBidderId] = useState([]);
-  const [bidderId2, setBidderId2] = useState([]);
 
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);

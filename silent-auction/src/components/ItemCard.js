@@ -3,12 +3,13 @@ import styled from "styled-components";
 
 const ItemCards = styled.div`
   width: 300px;
-  background: #eff4ff;
+  background-color: #E4E4E1;
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
   height: auto;
-  border-radius: 4px;
-  box-shadow: -14px 12px 14px 0px rgb(52, 28, 9), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
+  box-shadow: 3px 5px 20px darkgrey;
   text-align: center;
-  border: .5px dotted #341C09;
+  border: .5px solid lightgrey;
   margin: 0 auto;
 `;
 
@@ -16,6 +17,10 @@ const CardImg = styled.img`
   width: 250px;
   max-height: 400px;
   margin: 5%;
+  border-radius: 3px;
+  margin-bottom: 0px;
+  margin-top: 23px;
+
 `;
 
 const Strong = styled.strong`
@@ -27,10 +32,14 @@ const DetailsButton = styled.button`
   width: 150px;
   padding: 3% 0;
   margin: 4% 0;
-  background-color: #66b3ff;
+  background-color: white;
   color: black;
   border-radius: 3px;
   font-weight: bold;
+  :hover {
+    background-color: dodgerblue;
+    color: white;
+  }
 `;
 
 const ItemCard = props => {

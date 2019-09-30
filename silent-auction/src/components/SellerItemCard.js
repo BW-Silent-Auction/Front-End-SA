@@ -22,6 +22,7 @@ const SellerItemCards = styled.div`
   border-radius: 4px;
   border: .5px dotted #341C09;
   box-sizing: border-box;
+  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
 `;
 
 const SellerSplitInfo = styled.div`
@@ -31,7 +32,7 @@ const SellerSplitInfo = styled.div`
 
 const SellerMainDetails = styled.div`
   width: 50%;
-  border-right: 1px solid black;
+  border-right: 1px solid lightgrey;
   padding: 5%;
   margin-right: 6%;
   display: flex;
@@ -45,6 +46,7 @@ const SellerItemImg = styled.img`
   width: 250px;
   height: auto;
   object-fit: contain;
+  border-radius: 5px;
 `;
 
 const Strong = styled.strong`
@@ -81,7 +83,7 @@ const DeleteButton = styled.button`
 `;
 
 const TimeRemain = styled.h3`
-  fonst-size: 1rem;
+  font-size: 1rem;
 `;
 
 const StartBid = styled.p`
@@ -96,7 +98,7 @@ const SellerPriceAndTime = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  alig-items: center;
+  align-items: center;
 `;
 
 const EditDeleteContainer = styled.div`

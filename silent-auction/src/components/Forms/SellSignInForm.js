@@ -11,7 +11,7 @@ const FormContainer = styled.div`
     margin: 15% auto 10% auto;
     padding: 5%;
     border: 1px solid black;
-    background-color: white;
+    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
     box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
     font-size: 0.8rem;
     display: flex;
@@ -38,6 +38,10 @@ const Button = styled.button`
     border-radius: 3px;
     font-weight: bold;
     font-size: 1rem;
+    :hover {
+      color: white;
+      background-color: dodgerblue;
+    }
 `;
 const SignInFieldSet = styled.fieldset`
     border: none;
