@@ -13,10 +13,10 @@ import image from '../../images/placeholder_image_logo.png';
 
 const SellerFormContainer = styled.div`
     width: 460px;
-    margin: 20% auto 10% auto;
+    margin: 10% auto 5% auto;
     padding: 5%;
     border: 1px solid black;
-    background-color: white;
+    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
     box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
     font-size: 0.8rem;
     display: flex;
