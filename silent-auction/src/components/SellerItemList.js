@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import SellerItemCard from "./SellerItemCard";
 import SellerUploadForm from "./Forms/SellerUploadForm";
 import image from "../images/placeholder_image_logo.png";
 import styled from "styled-components";
 
-const SellerFormContainer = styled.div`
-  margin-top: 15%;
-`;
+// const SellerFormContainer = styled.div`
+//   margin-top: 15%;
+// `;
 
 const SellerProfile = styled.h1`
   width: 60%;
@@ -29,9 +28,9 @@ const SellerProfile = styled.h1`
   /* position: fixed; */
 `;
 
-const SellerList = styled.div`
-  margin: 2% 0;
-`;
+// const SellerList = styled.div`
+//   margin: 2% 0;
+// `;
 
 const SellerItemList = props => {
   const [sellerItemList, setSellerItemList] = useState([]);
@@ -43,11 +42,11 @@ const SellerItemList = props => {
     axiosWithAuth()
       .get(`/api/sellers/${id}/auctions`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setSellerItemList(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [id]);
 
   const editHandler = id => {
     const itemToEdit = sellerItemList.find(element => element.id === id);

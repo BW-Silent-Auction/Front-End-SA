@@ -1,89 +1,94 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import axiosWithAuth from '../../utils/axiosWithAuth';
-import axios from 'axios';
+import axiosWithAuth from "../../utils/axiosWithAuth";
 
 import { FaDollarSign } from "react-icons/fa";
 
-
 const BidderContainer = styled.div`
-    width: 460px;
-    margin: 15% auto 10% auto;
-    padding: 5%;
-    border: 1px solid black;
-    background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
-    box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
-    font-size: 0.8rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    border-radius: 10px;
+  width: 460px;
+  margin: 15% auto 10% auto;
+  padding: 5%;
+  border: 1px solid black;
+  background-image: linear-gradient(
+    to top,
+    #d5d4d0 0%,
+    #d5d4d0 1%,
+    #eeeeec 31%,
+    #efeeec 75%,
+    #e9e9e7 100%
+  );
+  box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
 `;
 const BidFieldSet = styled.fieldset`
-     border: none;
+  border: none;
 `;
 
 const NewBidTitle = styled.legend`
-    font-size: 2rem;
-    margin-bottom: 5%;
+  font-size: 2rem;
+  margin-bottom: 5%;
 `;
 
 const PriceInput = styled.input`
-    padding: 5% 0;
-    width: 250px;
-    border: 1px solid black;
-    margin: 4% 0;
-    border-radius: 3px;
+  padding: 5% 0;
+  width: 250px;
+  border: 1px solid black;
+  margin: 4% 0;
+  border-radius: 3px;
 `;
 
 const CancelButton = styled.button`
-    width: 120px;
-    padding: 4% 0;
-    margin-top: 5%;
-    border-radius: 3px;
-    margin-left: 1%;
-    background-color: grey;
-    color: white;
-    font-size: 1rem;
+  width: 120px;
+  padding: 4% 0;
+  margin-top: 5%;
+  border-radius: 3px;
+  margin-left: 1%;
+  background-color: grey;
+  color: white;
+  font-size: 1rem;
 `;
 const ConfirmButton = styled.button`
-    width: 120px;
-    padding: 4% 0;
-    margin-top: 5%;
-    border-radius: 3px;
-    margin-left: 1%;
-    background-color: #66b3ff;
-    color: black;
-    font-weight: bold;
-    font-size: .9rem;
+  width: 120px;
+  padding: 4% 0;
+  margin-top: 5%;
+  border-radius: 3px;
+  margin-left: 1%;
+  background-color: #66b3ff;
+  color: black;
+  font-weight: bold;
+  font-size: 0.9rem;
 `;
 
 const BidderForm = props => {
-    const [price, setPrice] = useState({
-      buyer_id: localStorage.getItem("buyer-id"),
-      bid_amount: ''
-    });
+  const [price, setPrice] = useState({
+    buyer_id: localStorage.getItem("buyer-id"),
+    bid_amount: ""
+  });
 
-    const handleChange = e => {
-        setPrice({ ...price, [e.target.name]: e.target.value });
-      };
+  const handleChange = e => {
+    setPrice({ ...price, [e.target.name]: e.target.value });
+  };
 
-    const handleCancel = e => {
-      props.history.push(`/products/${props.match.params.id}`)
-    }
-    
-    const handleSubmit = e => {
-      e.preventDefault();
-      axiosWithAuth()
+  const handleCancel = e => {
+    props.history.push(`/products/${props.match.params.id}`);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    axiosWithAuth()
       .post(`/api/products/${props.match.params.id}/bids`, price)
       .then(res => {
-        console.log(res);
+        // console.log(res);
         setPrice({ bid_amount: res.data });
-        props.history.push(`/products/${props.match.params.id}`)
+        props.history.push(`/products/${props.match.params.id}`);
       })
       .catch(err => console.log(err));
-    };
+  };
 
   return (
     <BidderContainer>
@@ -107,10 +112,12 @@ const BidderForm = props => {
             />
           </label>
           <hr />
-          <CancelButton onClick={e => handleCancel(e)}>
-            Cancel
-          </CancelButton>
-          <ConfirmButton type="submit" value="submit" onChange={e => handleChange(e)}>
+          <CancelButton onClick={e => handleCancel(e)}>Cancel</CancelButton>
+          <ConfirmButton
+            type="submit"
+            value="submit"
+            onChange={e => handleChange(e)}
+          >
             Confirm
           </ConfirmButton>
         </BidFieldSet>

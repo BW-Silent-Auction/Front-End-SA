@@ -52,7 +52,7 @@ const HomePage = props => {
   return (
     <HomeContainer>
       <div className="home-page-header">
-        <img src={image}></img>
+        <img src={image} alt={"Judge Hammer"}></img>
         <Header>Welcome to Silent Auction!</Header>
       </div>
       <div>

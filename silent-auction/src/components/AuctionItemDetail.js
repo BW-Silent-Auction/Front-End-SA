@@ -132,19 +132,18 @@ const AuctionItemDetail = props => {
 
   const clickedHandler = () => {
     props.history.push(`/products/${props.match.params.id}/bid`);
-    console.log("clicked");
+    // console.log("clicked");
   };
 
   const handleGoBack = () => {
     props.history.push(`/auction-item-list/`);
   };
-  console.log(props);
 
   useEffect(() => {
     axiosWithAuth()
       .get(`/api/products/${props.match.params.id}`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setItemDetail(res.data);
       })
       .catch(err => console.log(err));
@@ -187,7 +186,7 @@ const AuctionItemDetail = props => {
                           Bid Price: <NewPrice>${bid.bid_amount}</NewPrice>
                         </BidderPrice>
                         <span>
-                          {console.log(bid.details)}
+                          {/* {console.log(bid.details)} */}
                           Bidder: {bid.details.username.toUpperCase()}
                         </span>
                       </BidderList>

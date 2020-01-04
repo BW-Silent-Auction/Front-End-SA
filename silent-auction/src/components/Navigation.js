@@ -8,7 +8,6 @@ import {
 import RegisterForm from "./Forms/RegisterForm";
 import SignInForm from "./Forms/SignInForm";
 import SellSignInForm from "./Forms/SellSignInForm";
-import Profile from "./Profile";
 import AuctionItemList from "./AuctionItemList";
 import SellerItemList from "./SellerItemList";
 import PrivateRoute from "./PrivateRoute";
