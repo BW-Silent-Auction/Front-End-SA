@@ -8,7 +8,14 @@ import image from "../images/BidLogo.png";
 
 const ItemDetails = styled.div`
   width: 90%;
-  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  background-image: linear-gradient(
+    to top,
+    #d5d4d0 0%,
+    #d5d4d0 1%,
+    #eeeeec 31%,
+    #efeeec 75%,
+    #e9e9e7 100%
+  );
   color: black;
   width: 60%;
   height: auto;
@@ -16,12 +23,12 @@ const ItemDetails = styled.div`
   flex-direction: column;
   justify-content: space-between;
   font-size: 1rem;
-  padding:2%;
+  padding: 2%;
   margin: auto;
   margin-top: 10%;
-  box-shadow: -11px 8px 10px grey; 
+  box-shadow: -11px 8px 10px grey;
   border-radius: 5px;
-  border: 1px dotted #341C09;
+  border: 1px dotted #341c09;
 `;
 const SplitInfo = styled.div`
   width: 90%;
@@ -41,7 +48,7 @@ const MainDetails = styled.div`
   text-align: center;
 `;
 const ItemImg = styled.img`
-  max-width: 400px;
+  max-width: 300px;
   height: auto;
 `;
 const Price = styled.p`
@@ -66,10 +73,10 @@ const GoBackButton = styled.button`
   margin: 10px 0 10px 5%;
   border-radius: 3px;
   font-weight: bold;
-  font-size: .9rem;
+  font-size: 0.9rem;
 `;
 const PriceAndTime = styled.div`
-margin-left: 4%;
+  margin-left: 4%;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -91,8 +98,8 @@ const StartBid = styled.p`
 const ULBids = styled.ul`
   padding-left: 0;
 `;
-  const HighestHeader = styled.h2`
-  text-align: center;  
+const HighestHeader = styled.h2`
+  text-align: center;
   margin-left: 5%;
 `;
 const BidderList = styled.li`
@@ -100,24 +107,25 @@ const BidderList = styled.li`
   &:first-child {
     font-size: 1.2rem;
     line-height: 2rem;
-    border: 1px dotted #66b3ff;
+    border: 1px dashed red;
+    border-radius: 5px;
     width: 100%;
     height: auto;
-    /* padding: 0 6% 15% 6%; */
+    padding: 0 6% 15% 6%;
     text-align: top;
   }
-  `;
-  const BidLogo = styled.img`
-    height: 250px;
-    margin: 3% 0 3% 45%;
-  `;
-  const BidderPrice = styled.p`
-    color: black;
-    font-weight: bold;
-  `;
-  const NewPrice = styled.strong`
-    color: red;
-  `;
+`;
+const BidLogo = styled.img`
+  height: 250px;
+  margin: 3% 0 3% 45%;
+`;
+const BidderPrice = styled.p`
+  color: black;
+  font-weight: bold;
+`;
+const NewPrice = styled.strong`
+  color: #4760cd;
+`;
 
 const AuctionItemDetail = props => {
   const [itemDetail, setItemDetail] = useState({});
@@ -150,15 +158,18 @@ const AuctionItemDetail = props => {
             <ItemImg src={itemDetail.image} alt="image" />
             <div>
               <h4>{itemDetail.title}</h4>
-              <p><strong>Description: </strong>{itemDetail.description}</p>
-                <PlaceBidButton onClick={clickedHandler}>Place a Bid</PlaceBidButton>
-                <GoBackButton onClick={handleGoBack}>Back to List</GoBackButton>
-
+              <p>
+                <strong>Description: </strong>
+                {itemDetail.description}
+              </p>
+              <PlaceBidButton onClick={clickedHandler}>
+                Place a Bid
+              </PlaceBidButton>
+              <GoBackButton onClick={handleGoBack}>Back to List</GoBackButton>
             </div>
           </MainDetails>
           <PriceAndTime>
             <div>
-            
               <StartBid>Starting Price: </StartBid>
               <Price>${itemDetail.starting_price}</Price>
               <HighestHeader>Highest Bid</HighestHeader>
