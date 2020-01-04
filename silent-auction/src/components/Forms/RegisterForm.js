@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import axios from 'axios';
+import axios from "axios";
 
 import { FaUser } from "react-icons/fa";
 import { FaEnvelope } from "react-icons/fa";
@@ -8,8 +8,8 @@ import { FaKey } from "react-icons/fa";
 import { FaFont } from "react-icons/fa";
 import { FaBold } from "react-icons/fa";
 
-import { connect } from "react-redux";
-import { registerBuyer, registerSeller } from "../../actions";
+// import { connect } from "react-redux";
+// import { registerBuyer, registerSeller } from "../../actions";
 
 const FormContainer = styled.div`
   width: 460px;
@@ -18,7 +18,7 @@ const FormContainer = styled.div`
   border: 1px solid black;
   background-color: white;
   box-shadow: 2px 2px 10px 10px rgba(69, 62, 62, 0.53);
-  font-size: .8rem;
+  font-size: 0.8rem;
   border-radius: 10px;
   text-align: center;
 `;
@@ -28,7 +28,7 @@ const RegisterFieldSet = styled.fieldset`
 `;
 
 const RegisterTitle = styled.legend`
-    font-size: 2rem;
+  font-size: 2rem;
 `;
 
 const RegisterInput = styled.div`
@@ -38,84 +38,88 @@ const RegisterInput = styled.div`
   align-items: center;
 `;
 
- const Input = styled.input`
-    margin-top: 1%;
-    width: 350px;
-    padding: 4% 0;
- `;
+const Input = styled.input`
+  margin-top: 1%;
+  width: 350px;
+  padding: 4% 0;
+`;
 
- const SubTitle = styled.h2`
-    font-size: .9rem;
- `;
+const SubTitle = styled.h2`
+  font-size: 0.9rem;
+`;
 
- const Checkboxes = styled.div`
+const Checkboxes = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
- const Button = styled.input`
-    width: 350px;
-    padding: 4% 0;
-    margin-top: 2%;
-    border-radius: 3px;
-    background-color: #66b3ff;
-    color: black;
-    font-weight: bold;
-    font-size: 1rem;
- `;
-  
-function RegisterForm({ registerBuyer, registerSeller, history }) {
+const Button = styled.input`
+  width: 350px;
+  padding: 4% 0;
+  margin-top: 2%;
+  border-radius: 3px;
+  background-color: #66b3ff;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+`;
 
+function RegisterForm({ registerBuyer, registerSeller, history }) {
   const [register, setRegister] = useState({
-        first_name: '', 
-        last_name: '', 
-        username: '', 
-        email: '', 
-        password: ''
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    password: ""
   });
 
   const [check, setCheck] = useState({
     seller: false,
     buyer: false
-  })
+  });
 
   const handleCheck = e => {
     if (e.target.value === "buyer") {
-      setCheck({ buyer: true })
+      setCheck({ buyer: true });
     } else if (e.target.value === "seller") {
-      setCheck({ seller: true })
+      setCheck({ seller: true });
     }
-    console.log(check.seller, check.buyer);
-  }
+    // console.log(check.seller, check.buyer);
+  };
 
   const handleChange = e => {
     setRegister({ ...register, [e.target.name]: e.target.value });
   };
-    
-  useEffect(() => console.log("submit with useEffect"));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     if (check.buyer === true) {
-  console.log("submit activated");
-    axios
-      .post(`https://bw-silent-auction.herokuapp.com/api/buyers/register`, register)
-      .then(res => {      
-        console.log(res.data, "buyer call made");
-        localStorage.setItem('buyer-id', res.data.id);
-        history.push('/buyer-login');
-      })
-      .catch(err => console.log(err));
-  } else if (check.seller === true) {
-    axios
-      .post(`https://bw-silent-auction.herokuapp.com/api/sellers/register`, register)
-      .then(res => {      
-        console.log(res.data, "seller call made");
-        localStorage.setItem('seller-id', res.data.id); // id: 1
-        history.push('/seller-login');
-      })
-      .catch(err => console.log(err));
-  }};
+      // console.log("submit activated");
+      axios
+        .post(
+          `https://bw-silent-auction.herokuapp.com/api/buyers/register`,
+          register
+        )
+        .then(res => {
+          // console.log(res.data, "buyer call made");
+          localStorage.setItem("buyer-id", res.data.id);
+          history.push("/buyer-login");
+        })
+        .catch(err => console.log(err));
+    } else if (check.seller === true) {
+      axios
+        .post(
+          `https://bw-silent-auction.herokuapp.com/api/sellers/register`,
+          register
+        )
+        .then(res => {
+          // console.log(res.data, "seller call made");
+          localStorage.setItem("seller-id", res.data.id); // id: 1
+          history.push("/seller-login");
+        })
+        .catch(err => console.log(err));
+    }
+  };
 
   return (
     <div>
@@ -188,7 +192,7 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
                     type="password"
                     name="password"
                     placeholder="password"
-                    // minlength='8' 
+                    // minlength='8'
                     required
                     value={register.password}
                     onChange={e => handleChange(e)}
@@ -198,37 +202,37 @@ function RegisterForm({ registerBuyer, registerSeller, history }) {
               <Checkboxes className="checkbox-container">
                 <label>
                   <SubTitle>Please Select User Type:</SubTitle>
-                  <input 
-                  id="sellerChoice" 
-                  type="checkbox" 
-                  name="seller"
-                  value="seller"
-                  // required
-                  checked={check.seller}
-                  onChange={handleCheck}
-                  /> 
-                    Seller
-                  </label> 
-                  <label>
-                    <input 
-                    id="buyerChoice" 
-                    type="checkbox" 
-                    name="buyer" 
+                  <input
+                    id="sellerChoice"
+                    type="checkbox"
+                    name="seller"
+                    value="seller"
+                    // required
+                    checked={check.seller}
+                    onChange={handleCheck}
+                  />
+                  Seller
+                </label>
+                <label>
+                  <input
+                    id="buyerChoice"
+                    type="checkbox"
+                    name="buyer"
                     value="buyer"
                     // required
                     checked={check.buyer}
                     onChange={handleCheck}
-                    /> 
-                  Buyer 
-                  </label>
+                  />
+                  Buyer
+                </label>
               </Checkboxes>
               <Button type="submit" value="Submit"></Button>
             </RegisterInput>
-            </RegisterFieldSet>
+          </RegisterFieldSet>
         </form>
       </FormContainer>
     </div>
   );
-};
+}
 
 export default RegisterForm;

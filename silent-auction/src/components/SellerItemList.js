@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from "../utils/axiosWithAuth";
 import SellerItemCard from "./SellerItemCard";
 import SellerUploadForm from "./Forms/SellerUploadForm";
 import image from "../images/placeholder_image_logo.png";
 import styled from "styled-components";
 
-const SellerFormContainer = styled.div`
-  margin-top: 15%;
-`;
+// const SellerFormContainer = styled.div`
+//   margin-top: 15%;
+// `;
 
 const SellerProfile = styled.h1`
   width: 60%;
@@ -17,17 +16,23 @@ const SellerProfile = styled.h1`
   margin: 5% 0 0 20%;
   border-radius: 10px;
   box-shadow: 0px 1px 10px 0 grey;
-  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%);
+  background-image: linear-gradient(
+    to top,
+    #d5d4d0 0%,
+    #d5d4d0 1%,
+    #eeeeec 31%,
+    #efeeec 75%,
+    #e9e9e7 100%
+  );
   padding: 2% 0;
   /* position: fixed; */
 `;
 
-const SellerList = styled.div`
-margin: 2% 0;
-`;
+// const SellerList = styled.div`
+//   margin: 2% 0;
+// `;
 
 const SellerItemList = props => {
-
   const [sellerItemList, setSellerItemList] = useState([]);
   const id = localStorage.getItem("seller-id");
   const [editItem, setEditItem] = useState({});
@@ -37,17 +42,19 @@ const SellerItemList = props => {
     axiosWithAuth()
       .get(`/api/sellers/${id}/auctions`)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         setSellerItemList(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [id]);
 
   const editHandler = id => {
     const itemToEdit = sellerItemList.find(element => element.id === id);
     setEditItem(itemToEdit);
     setEdit(true);
     // scrollToComponent(Form);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   };
 
   const deleteHandler = id => {
@@ -94,7 +101,6 @@ const SellerItemList = props => {
                 />
               ))
             : null}
-
         </section>
       </section>
     </>
